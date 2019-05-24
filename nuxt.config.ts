@@ -1,6 +1,8 @@
-import pkg from './package'
+import NuxtConfiguration from '@nuxt/config';
 
-export default {
+const pkg = require('./package.json');
+
+const config: NuxtConfiguration = {
   mode: 'universal',
 
   /*
@@ -55,14 +57,16 @@ export default {
      */
     extend(config, ctx) {
       // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
+      if (ctx.isDev && ctx.isClient && config.module) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
-        })
+        });
       }
     }
   }
-}
+};
+
+export default config;
