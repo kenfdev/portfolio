@@ -44,6 +44,12 @@ module.exports = async ({ config, mode }) => {
     ]
   });
 
+  config.module.rules.push({
+    test: /\.stories\.ts$/,
+    loader: '@storybook/addon-storysource/loader',
+    enforce: 'pre'
+  });
+
   config.resolve.extensions.push(
     '.ts',
     '.tsx',

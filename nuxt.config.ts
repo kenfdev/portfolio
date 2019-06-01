@@ -15,7 +15,13 @@ const config: NuxtConfiguration = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        type: 'text/javascript',
+        src: 'https://kit.fontawesome.com/ad677bf6cc.js'
+      }
+    ]
   },
 
   /*
@@ -40,8 +46,7 @@ const config: NuxtConfiguration = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    ['nuxt-sass-resources-loader', ['~/assets/sass/variable.scss']],
-    'nuxt-buefy'
+    ['nuxt-sass-resources-loader', ['~/assets/sass/variable.scss']]
   ],
   /*
    ** Axios module configuration

@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style['k-avatar']" :style="{ height: size, width: size }">
+  <div :class="$style.avatar" :style="{ height: size, width: size }">
     <slot />
   </div>
 </template>
@@ -14,7 +14,7 @@ export default class KAvatar extends Vue {
 </script>
 
 <style lang="scss" module>
-.k-avatar {
+.avatar {
   align-items: center;
   border-radius: 50%;
   display: inline-flex;
@@ -24,6 +24,7 @@ export default class KAvatar extends Vue {
   vertical-align: middle;
 
   img {
+    border: 4px solid #fff;
     border-radius: 50%;
     display: inline-flex;
     height: inherit;

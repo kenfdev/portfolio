@@ -1,6 +1,6 @@
 <template>
   <section id="top-cover">
-    <profile-card />
+    <profile-card :class="$style.profileCard" />
   </section>
 </template>
 
@@ -16,4 +16,8 @@ import ProfileCard from '@/components/organisms/ProfileCard/index.vue';
 export default class TopTemplate extends Vue {}
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" module>
+.profileCard {
+  margin: 0 auto;
+}
+</style>
