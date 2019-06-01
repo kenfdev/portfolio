@@ -1,23 +1,17 @@
 <template>
   <section id="top-cover">
-    <profile-card :class="$style.profileCard" />
+    <hello-section />
   </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import ProfileCard from '@/components/organisms/ProfileCard/index.vue';
+import HelloSection from '@/components/organisms/HelloSection/index.vue';
 
 @Component({
   components: {
-    ProfileCard
+    HelloSection
   }
 })
 export default class TopTemplate extends Vue {}
 </script>
-
-<style lang="scss" module>
-.profileCard {
-  margin: 0 auto;
-}
-</style>
