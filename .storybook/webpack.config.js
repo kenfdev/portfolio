@@ -25,7 +25,16 @@ module.exports = async ({ config, mode }) => {
           modules: true
         }
       },
-      'sass-loader'
+      {
+        loader: 'sass-loader',
+        options: {
+          data: `
+						@import "~/assets/scss/_variables.scss";
+						@import "~/assets/scss/_common.scss";
+						@import "~/assets/scss/_mixins.scss";
+					`
+        }
+      }
     ],
     include: path.resolve(__dirname, '../')
   });

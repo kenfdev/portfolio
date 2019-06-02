@@ -19,13 +19,8 @@ export default class NavBar extends Vue {}
 
 <style lang="scss" module>
 .navBar {
-  display: flex;
-  position: sticky;
-  top: 0;
   background: #333;
   color: #fff;
-  justify-content: space-between;
-  z-index: 1;
   padding: 1rem;
 }
 </style>

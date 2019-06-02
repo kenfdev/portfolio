@@ -53,7 +53,6 @@ export default class HelloSection extends Vue {}
 <style lang="scss" module>
 .helloSection {
   position: relative;
-  margin-top: -107px;
   display: flex;
   flex-flow: column;
   justify-content: center;

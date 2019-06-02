@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar />
+    <nav-bar :class="$style.navBar" />
     <nuxt />
     <footer :class="$style.footer">
       <k-container>
@@ -25,6 +25,16 @@ export default class DefaultLayout extends Vue {}
 </script>
 
 <style lang="scss" module>
+.navBar {
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  z-index: 1;
+  @include sm {
+    position: relative;
+  }
+}
 .footer {
   background: #333;
   color: #fff;

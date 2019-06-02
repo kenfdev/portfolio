@@ -32,7 +32,7 @@ const config: NuxtConfiguration = {
   /*
    ** Global CSS
    */
-  css: ['~/assets/sass/common.scss'],
+  css: ['~assets/scss/_common.scss'],
 
   /*
    ** Plugins to load before mounting the App
@@ -46,8 +46,12 @@ const config: NuxtConfiguration = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    ['nuxt-sass-resources-loader', ['~/assets/sass/variable.scss']]
+    '@nuxtjs/style-resources'
   ],
+
+  styleResources: {
+    scss: ['~assets/scss/_variables.scss', '~assets/scss/_mixins.scss']
+  },
   /*
    ** Axios module configuration
    */

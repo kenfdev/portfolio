@@ -18,3 +18,5 @@ import InstructorSection from '@/components/organisms/InstructorSection/index.vu
 })
 export default class TopTemplate extends Vue {}
 </script>
+
+<style lang="scss" module></style>

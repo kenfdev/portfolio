@@ -52,21 +52,35 @@ export default class InstructorSection extends Vue {
 </script>
 
 <style lang="scss" module>
+// @import '~/assets/sass/variables.scss';
+// @import '~/assets/sass/mixins.scss';
 .items {
   display: flex;
-  padding: 1rem;
   justify-content: space-between;
+  flex-direction: row;
+  align-items: normal;
+  @include lg {
+    flex-direction: row;
+    align-items: normal;
+  }
+  @include sm {
+    flex-direction: column;
+    align-items: center;
+  }
   .item {
     text-decoration: none;
     display: flex;
     text-align: left;
     width: 38%;
+    margin: 1rem 0;
+    @include lg {
+      width: 45%;
+    }
+    @include sm {
+      width: 60%;
+    }
     .title {
       font-weight: 600;
-    }
-
-    &:hover {
-      cursor: pointer;
     }
   }
 }
