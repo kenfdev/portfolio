@@ -1,20 +1,21 @@
 <template>
-  <div>
-    <nav-bar />
-    <nuxt />
-  </div>
+  <section>
+    <k-container>
+      <h2>Instructor</h2>
+    </k-container>
+  </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import KContainer from '@/components/atoms/KContainer/index.vue';
-import NavBar from '@/components/organisms/NavBar/index.vue';
 
 @Component({
   components: {
-    KContainer,
-    NavBar
+    KContainer
   }
 })
-export default class DefaultLayout extends Vue {}
+export default class InstructorSection extends Vue {}
 </script>
+
+<style lang="scss" module></style>

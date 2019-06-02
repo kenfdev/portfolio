@@ -1,16 +1,19 @@
 <template>
-  <section id="top-cover">
+  <div id="top-cover">
     <hello-section />
-  </section>
+    <instructor-section />
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloSection from '@/components/organisms/HelloSection/index.vue';
+import InstructorSection from '@/components/organisms/InstructorSection/index.vue';
 
 @Component({
   components: {
-    HelloSection
+    HelloSection,
+    InstructorSection
   }
 })
 export default class TopTemplate extends Vue {}
