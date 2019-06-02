@@ -2,6 +2,11 @@
   <div>
     <nav-bar />
     <nuxt />
+    <footer :class="$style.footer">
+      <k-container>
+        <p>Copyright © 2019, Ken Fukuyama, All Rights Reserved</p>
+      </k-container>
+    </footer>
   </div>
 </template>
 
@@ -18,3 +23,11 @@ import NavBar from '@/components/organisms/NavBar/index.vue';
 })
 export default class DefaultLayout extends Vue {}
 </script>
+
+<style lang="scss" module>
+.footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+}
+</style>

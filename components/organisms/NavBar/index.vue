@@ -1,7 +1,7 @@
 <template>
   <nav :class="$style.navBar">
     <h1>Ken Fukuyama</h1>
-    <nav-bar-menu :items="[{ name: 'Home' }]" />
+    <nav-bar-menu :items="[]" />
   </nav>
 </template>
 
