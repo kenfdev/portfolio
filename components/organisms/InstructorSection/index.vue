@@ -79,6 +79,9 @@ export default class InstructorSection extends Vue {
     @include sm {
       width: 60%;
     }
+    @include xs {
+      width: 90%;
+    }
     .title {
       font-weight: 600;
     }
