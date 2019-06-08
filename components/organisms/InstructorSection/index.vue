@@ -1,7 +1,7 @@
 <template>
   <section>
     <k-container>
-      <h2>Instructor Work</h2>
+      <h2>Published Courses</h2>
       <div :class="$style.items">
         <a
           v-for="(course, index) in courses"
