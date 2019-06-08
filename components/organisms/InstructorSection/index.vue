@@ -52,8 +52,6 @@ export default class InstructorSection extends Vue {
 </script>
 
 <style lang="scss" module>
-// @import '~/assets/sass/variables.scss';
-// @import '~/assets/sass/mixins.scss';
 .items {
   display: flex;
   justify-content: space-between;
