@@ -1,0 +1,4 @@
+[build]
+  functions = "functions/dist"
+  publish = "dist"
+  command = "npm run generate && npm run functions:build"
