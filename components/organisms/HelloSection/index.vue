@@ -62,6 +62,7 @@ export default class HelloSection extends Vue {}
     url('https://images.unsplash.com/photo-1545987796-200677ee1011?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')
     no-repeat center center/cover;
   height: 100vh;
+  margin-top: -112px;
   color: #fff;
 
   .content {
@@ -78,6 +79,9 @@ export default class HelloSection extends Vue {}
     img {
       box-shadow: inset 0 1.5px 3px 0 rgba(0, 0, 0, 0.15),
         0 1.5px 3px 0 rgba(0, 0, 0, 0.15);
+    }
+    .avatar {
+      margin-top: 90px;
     }
 
     .catch {

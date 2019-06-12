@@ -3,7 +3,7 @@ import NuxtConfiguration from '@nuxt/config';
 const pkg = require('./package.json');
 
 const config: NuxtConfiguration = {
-  mode: 'universal',
+  mode: 'spa',
 
   /*
    ** Headers of the page
@@ -37,7 +37,7 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/vue-instantsearch'],
 
   /*
    ** Nuxt.js modules
@@ -63,6 +63,7 @@ const config: NuxtConfiguration = {
    ** Build configuration
    */
   build: {
+    transpile: ['vue-instantsearch', 'instantsearch.js/es'],
     /*
      ** You can extend webpack config here
      */

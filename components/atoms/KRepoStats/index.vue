@@ -49,6 +49,7 @@ export default class KRepoStats extends Vue {
 
 <style lang="scss" module>
 .repoStats {
+  color: #000;
   .languageColor {
     background-color: #00add8;
     border-radius: 50%;
