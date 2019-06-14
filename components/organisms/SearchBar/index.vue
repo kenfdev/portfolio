@@ -10,7 +10,7 @@
         <vue-autosuggest
           :suggestions="indicesToSuggestions(indices)"
           :input-props="{
-            placeholder: 'Search here…'
+            placeholder: 'Search about me here…'
           }"
           :get-suggestion-value="getSuggestionValue(currentRefinement)"
           @input="refine"
@@ -126,7 +126,8 @@ export default class SearchBar extends Vue {
   }
   #autosuggest {
     position: relative;
-    max-width: 740px;
+    max-width: 500px;
+    margin: auto;
     input {
       width: 100%;
       height: 30px;
@@ -139,7 +140,7 @@ export default class SearchBar extends Vue {
       border-radius: 15px;
       margin-right: 10px;
       transition: border-color 0.2s ease;
-      // background: #fff url(../images/search.png) 8px 5px no-repeat;
+      background: #fff url(~assets/images/search.png) 6px 4px no-repeat;
       background-size: 20px;
       vertical-align: middle !important;
     }
@@ -162,6 +163,10 @@ export default class SearchBar extends Vue {
       }
     }
     &-item {
+      &:hover {
+        background-color: #d3d3d3;
+      }
+      cursor: pointer;
       word-break: break-all;
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       padding: 1rem;

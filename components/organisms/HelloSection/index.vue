@@ -10,28 +10,34 @@
         <span :class="$style.primary">Ken Fukuyama</span>
         <span :class="$style.secondary">Software Engineer at CYDAS, Inc.</span>
       </div>
-      <!-- <div :class="$style.externalLinks">
-      <k-logo-icon icon="fa-github" url="https://github.com/kenfdev" />
-      <k-logo-icon
-        icon="fa-facebook-square"
-        url="https://facebook.com/kenfukuyama85"
-        bg-color="#3b5998"
-        color="#fff"
-      />
-      <k-logo-icon
-        icon="fa-twitter"
-        url="https://twitter.com/kenfdev"
-        bg-color="#55acee"
-        color="#fff"
-      />
-      <k-logo-icon
-        icon="fa-linkedin-in"
-        url="https://linkedin.com/in/kenfdev"
-        bg-color="#1f88be"
-        color="#fff"
-      />
-      <k-logo-icon icon="fa-medium" url="https://medium.com/@kenfdev" />
-    </div> -->
+      <div :class="$style.externalLinks">
+        <k-logo-icon
+          :class="$style.logo"
+          icon="fa-github"
+          url="https://github.com/kenfdev"
+        />
+        <k-logo-icon
+          :class="$style.logo"
+          icon="fa-facebook-square"
+          url="https://facebook.com/kenfukuyama85"
+          bg-color="#3b5998"
+          color="#fff"
+        />
+        <k-logo-icon
+          :class="$style.logo"
+          icon="fa-twitter"
+          url="https://twitter.com/kenfdev"
+          bg-color="#55acee"
+          color="#fff"
+        />
+        <k-logo-icon
+          :class="$style.logo"
+          icon="fa-linkedin-in"
+          url="https://linkedin.com/in/kenfdev"
+          bg-color="#1f88be"
+          color="#fff"
+        />
+      </div>
     </div>
   </header>
 </template>
@@ -101,6 +107,9 @@ export default class HelloSection extends Vue {}
       p {
         padding: 0 1rem;
       }
+    }
+    .logo {
+      margin: 0 1rem;
     }
   }
 }

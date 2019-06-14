@@ -4,7 +4,7 @@
       <ais-highlight :hit="item" attribute="title" />
     </div>
 
-    {{ formatDateTime(item.updated) }}
+    <p :class="$style.published">{{ formatDateTime(item.updated) }}</p>
     <div :class="$style.summary">
       <ais-highlight :hit="item" attribute="summary" />
     </div>
@@ -38,6 +38,10 @@ export default class BlogResult extends Vue {
     font-size: 1rem;
     margin-bottom: 0.25rem;
     font-weight: bold;
+  }
+  .published {
+    margin: 0;
+    color: #9e9e9e;
   }
   .summary {
     color: #9e9e9e;

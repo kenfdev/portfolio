@@ -42,6 +42,9 @@ export default class SlideResult extends Vue {
 .slideResult {
   display: grid;
   grid-template-columns: 2fr 5fr;
+  @include sm {
+    grid-template-columns: 1fr;
+  }
   grid-column-gap: 10px;
   grid-row-gap: 15px;
   .thumbnail {
