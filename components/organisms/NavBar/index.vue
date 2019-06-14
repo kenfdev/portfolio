@@ -1,6 +1,5 @@
 <template>
   <nav class="navBar" :class="$style.navBar">
-    <h1 :class="$style.name">Ken Fukuyama</h1>
     <div :class="$style.container">
       <search-bar />
     </div>
@@ -23,7 +22,6 @@ export default class NavBar extends Vue {}
 
 <style lang="scss" module>
 .navBar {
-  background: #333;
   color: #fff;
   padding: 1rem;
   .name {
