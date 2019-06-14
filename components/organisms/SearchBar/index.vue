@@ -16,6 +16,13 @@
           @input="refine"
           @selected="onSelect"
         >
+          <template slot="before-suggestions">
+            <div class="algolia">
+              <a href="https://www.algolia.com/" target="_blank">
+                <img src="~assets/images/search_by_algolia.png" alt="" />
+              </a>
+            </div>
+          </template>
           <template slot-scope="{ suggestion }">
             <component
               :is="resultComponent(suggestion.item)"
@@ -78,10 +85,40 @@ export default class SearchBar extends Vue {
     console.log(indices);
     return indices.map(({ hits }) => ({ data: hits }));
   }
+  mounted() {
+    document.addEventListener('mouseup', this.onDocumentMouseUp);
+  }
+  beforeDestroy() {
+    document.removeEventListener('mouseup', this.onDocumentMouseUp);
+  }
+  onDocumentMouseUp(e: any) {
+    // hack to catch click event inside autosuggestion
+    if (
+      e.target &&
+      e.target.parentNode &&
+      e.target.parentNode.href === 'https://www.algolia.com/'
+    ) {
+      window.open('https://www.algolia.com', '_blank');
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+.searchBar {
+  .algolia {
+    position: sticky;
+    width: inherit;
+    background-color: white;
+    top: 0;
+    border-radius: 15px;
+    border-radius: 15px 15px 0 0;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    text-align: right;
+  }
+}
 .searchBar ::v-deep {
   .ais-Highlight-highlighted {
     background: cyan;

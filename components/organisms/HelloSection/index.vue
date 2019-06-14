@@ -66,7 +66,7 @@ export default class HelloSection extends Vue {}
   color: #fff;
 
   .content {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.15);
     height: 100%;
     left: 0;
     right: 0;
