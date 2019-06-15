@@ -15,7 +15,16 @@ glob('../resources/*.json', undefined, function(er, files) {
   const objects = files.reduce((agg, file) => {
     const json = fs.readFileSync(file, 'utf8');
     const objects = JSON.parse(json);
-    return [...agg, ...objects];
+    const parsed = objects.map(o => {
+      if (o.published) {
+        o.publishedAt = new Date(o.published).getTime();
+      }
+      if (o.updated) {
+        o.updatedAt = new Date(o.updated).getTime();
+      }
+      return o;
+    });
+    return [...agg, ...parsed];
   }, []);
 
   index.addObjects(objects, () => {
