@@ -23,7 +23,7 @@ const config: NuxtConfiguration = {
       },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=1' }],
     script: [
       {
         type: 'text/javascript',
