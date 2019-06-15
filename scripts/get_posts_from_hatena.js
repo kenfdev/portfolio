@@ -63,9 +63,7 @@ async function getAllEntries(url) {
         title: e.title[0],
         url: e.link[1].$.href,
         published: e.published[0],
-        publishedAt: new Date(e.published[0]).getTime(),
         updated: e.updated[0],
-        updatedAt: new Date(e.updated[0]).getTime(),
         summary: e.summary[0]._,
         tags: categories.map(c => c.$.term)
       };
