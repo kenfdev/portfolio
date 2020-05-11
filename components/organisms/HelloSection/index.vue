@@ -8,7 +8,7 @@
       </div>
       <div :class="$style.catch">
         <span :class="$style.primary">Ken Fukuyama</span>
-        <span :class="$style.secondary">Software Engineer at CYDAS, Inc.</span>
+        <span :class="$style.secondary">Software Engineer</span>
       </div>
       <div :class="$style.externalLinks">
         <k-logo-icon
