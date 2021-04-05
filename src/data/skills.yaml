@@ -1,0 +1,59 @@
+---
+language:
+  - name: TypeScript
+    level: 4
+  - name: Go
+    level: 3
+  - name: C#
+    level: 3
+  - name: PHP
+    level: 3
+frontendFramework:
+  - name: Vue.js
+    level: 3
+  - name: React
+    level: 3
+  - name: Angular
+    level: 3
+  - name: AngularJS
+    level: 3
+backendFramework:
+  - name: ASP.NET(C#)
+    level: 3
+  - name: Echo(Go)
+    level: 3
+  - name: Node.js(TypeScript)
+    level: 3
+  - name: Laravel(PHP)
+    level: 3
+database:
+  - name: PostgreSQL
+    level: 3
+  - name: MySQL
+    level: 3
+  - name: HBase
+    level: 2
+test:
+  - name: Jest(TypeScript)
+    level: 4
+  - name: Ginkgo(Go)
+    level: 3
+  - name: NUnit(C#)
+    level: 3
+  - name: PHPUnit
+    level: 3
+  - name: Cypress(e2e)
+    level: 3
+  - name: Selenium(e2e)
+    level: 3
+infrastructure:
+  - name: AWS
+    level: 3
+  - name: Terraform
+    level: 3
+  - name: Ansible
+    level: 3
+  - name: CircleCI
+    level: 3
+  - name: Docker
+    level: 3
