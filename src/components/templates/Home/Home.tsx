@@ -20,6 +20,8 @@ function calcSkillsPerRow() {
       skillsPerRow = 2;
     }
     return skillsPerRow;
+  } else {
+    return 3;
   }
 }
 
