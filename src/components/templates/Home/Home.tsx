@@ -11,14 +11,16 @@ interface Props {
 }
 
 function calcSkillsPerRow() {
-  let skillsPerRow = 3;
-  const width = window.innerWidth;
-  if (width < 550) {
-    skillsPerRow = 1;
-  } else if (width < 769) {
-    skillsPerRow = 2;
+  if (typeof window !== `undefined`) {
+    let skillsPerRow = 3;
+    const width = window.innerWidth;
+    if (width < 550) {
+      skillsPerRow = 1;
+    } else if (width < 769) {
+      skillsPerRow = 2;
+    }
+    return skillsPerRow;
   }
-  return skillsPerRow;
 }
 
 export const Home: FunctionComponent<Props> = ({ about, skills, sns }) => {
