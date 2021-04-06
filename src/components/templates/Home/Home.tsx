@@ -11,28 +11,29 @@ interface Props {
 }
 
 function calcSkillsPerRow() {
-  if (typeof window !== `undefined`) {
-    let skillsPerRow = 3;
-    const width = window.innerWidth;
-    if (width < 550) {
-      skillsPerRow = 1;
-    } else if (width < 769) {
-      skillsPerRow = 2;
-    }
-    return skillsPerRow;
-  } else {
-    return 3;
+  let skillsPerRow = 3;
+  const width = window.innerWidth;
+  if (width < 550) {
+    skillsPerRow = 1;
+  } else if (width < 769) {
+    skillsPerRow = 2;
   }
+  return skillsPerRow;
 }
 
 export const Home: FunctionComponent<Props> = ({ about, skills, sns }) => {
-  const initSkillsPerRow = calcSkillsPerRow();
-  const [skillsPerRow, setSkillsPerRow] = useState<number>(initSkillsPerRow);
+  const [hasRan, setHasRan] = useState(false);
+  const [skillsPerRow, setSkillsPerRow] = useState<number>(0);
 
   useEffect(() => {
     function handleResize() {
       const perRow = calcSkillsPerRow();
       setSkillsPerRow(perRow);
+    }
+
+    if (!hasRan) {
+      setHasRan(true);
+      handleResize();
     }
 
     window.addEventListener('resize', handleResize);
