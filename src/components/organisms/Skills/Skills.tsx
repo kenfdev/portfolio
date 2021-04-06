@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { Skill, SkillData } from '../../molecules/Skill';
 import styled from 'styled-components';
+import Section from '../../shared/Section';
+import SectionTitle from '../../shared/SectionTitle';
 
-interface Skills {
+export interface SkillsData {
   language: SkillData[];
   frontendFramework: SkillData[];
   backendFramework: SkillData[];
@@ -13,7 +15,7 @@ interface Skills {
 
 interface Props {
   className?: string;
-  data: Skills;
+  data: SkillsData;
   skillsPerRow: number;
 }
 
@@ -24,30 +26,43 @@ export const Skills: FunctionComponent<Props> = ({
 }) => {
   const flexBasis = `${100.0 / skillsPerRow}%`;
   return (
-    <div className={className}>
-      <FlexSkill flexBasis={flexBasis}>
-        <Skill name="Language" data={skills.language} />
-      </FlexSkill>
-      <FlexSkill flexBasis={flexBasis}>
-        <Skill name="Front-end Frameworks" data={skills.frontendFramework} />
-      </FlexSkill>
-      <FlexSkill flexBasis={flexBasis}>
-        <Skill name="Back-end Frameworks" data={skills.backendFramework} />
-      </FlexSkill>
-      <FlexSkill flexBasis={flexBasis}>
-        <Skill name="Testing" data={skills.test} />
-      </FlexSkill>
-      <FlexSkill flexBasis={flexBasis}>
-        <Skill name="Databases" data={skills.database} />
-      </FlexSkill>
-      <FlexSkill flexBasis={flexBasis}>
-        <Skill name="Infrastructure" data={skills.infrastructure} />
-      </FlexSkill>
-    </div>
+    <Section className={className}>
+      <CenteredSectionTitle>Skills</CenteredSectionTitle>
+      <Container>
+        <FlexSkill flexBasis={flexBasis}>
+          <Skill name="Language" data={skills.language} />
+        </FlexSkill>
+        <FlexSkill flexBasis={flexBasis}>
+          <Skill name="Front-end Frameworks" data={skills.frontendFramework} />
+        </FlexSkill>
+        <FlexSkill flexBasis={flexBasis}>
+          <Skill name="Back-end Frameworks" data={skills.backendFramework} />
+        </FlexSkill>
+        <FlexSkill flexBasis={flexBasis}>
+          <Skill name="Testing" data={skills.test} />
+        </FlexSkill>
+        <FlexSkill flexBasis={flexBasis}>
+          <Skill name="Databases" data={skills.database} />
+        </FlexSkill>
+        <FlexSkill flexBasis={flexBasis}>
+          <Skill name="Infrastructure" data={skills.infrastructure} />
+        </FlexSkill>
+      </Container>
+    </Section>
   );
 };
+
+const CenteredSectionTitle = styled(SectionTitle)`
+  text-align: center;
+`;
 
 const FlexSkill = styled.div`
   padding: 1rem 0 1rem 0;
   ${(props: { flexBasis: string }) => `flex: 0 0 ${props.flexBasis}`};
+`;
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 `;

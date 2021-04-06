@@ -1,12 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { DefaultLayout } from '../DefaultLayout';
 import { TopProfile } from '../../organisms/TopProfile';
-import { About } from '../../organisms/About';
-import { Skills } from '../../organisms/Skills';
+import { About, Sns } from '../../organisms/About';
+import { Skills, SkillsData } from '../../organisms/Skills';
 import styled from 'styled-components';
-
 interface Props {
-  data: any;
+  about: string;
+  skills: SkillsData;
+  sns: Sns;
 }
 
 function calcSkillsPerRow() {
@@ -20,7 +21,7 @@ function calcSkillsPerRow() {
   return skillsPerRow;
 }
 
-export const Home: FunctionComponent<Props> = ({ data }) => {
+export const Home: FunctionComponent<Props> = ({ about, skills, sns }) => {
   const initSkillsPerRow = calcSkillsPerRow();
   const [skillsPerRow, setSkillsPerRow] = useState<number>(initSkillsPerRow);
 
@@ -42,24 +43,35 @@ export const Home: FunctionComponent<Props> = ({ data }) => {
       <TopProfileWrapper>
         <TopProfile />
       </TopProfileWrapper>
-      <About />
+      <AboutWrapper>
+        <About content={about} sns={sns} />
+      </AboutWrapper>
       <SkillsWrapper>
-        <FlexedSkills skillsPerRow={skillsPerRow} data={data} />
+        <Skills skillsPerRow={skillsPerRow} data={skills} />
       </SkillsWrapper>
+      <Footer>© {new Date().getFullYear()}, Ken Fukuyama</Footer>
     </DefaultLayout>
   );
 };
 
-const TopProfileWrapper = styled.div`
-  padding: 2rem 0 2rem 0;
+const DivWithBoxShadow = styled.div``;
+
+const TopProfileWrapper = styled(DivWithBoxShadow)`
+  padding: 2rem 0;
   text-align: center;
-  box-shadow: 0 0.02rem 0.25rem 0 rgb(0 0 0 / 10%);
 `;
 
-const FlexedSkills = styled(Skills)`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
+const AboutWrapper = styled(DivWithBoxShadow)`
+  margin: 1rem auto;
+  padding: 0 1rem;
+  max-width: 50rem;
 `;
 
-const SkillsWrapper = styled.div``;
+const SkillsWrapper = styled.div`
+  margin: 1rem 0;
+`;
+
+const Footer = styled.footer`
+  padding: 0.5rem;
+  font-size: 0.8rem;
+`;

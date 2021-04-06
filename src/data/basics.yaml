@@ -6,10 +6,15 @@ about:
   applications. I love communicating with colleagues and solving issues in order to
   be as productive as possible. Always looking for ways to improve things (process,
   tools, technologies, etc.) and applying them step by step.\n\nMy area of expertise
-  is in modern front-end architecture (e.g. related to Vuex, ngrx), but I am always
+  is in modern front-end architecture, but I am always
   aware of the back-end, CI/CD pipeline and everything related to delivering the product.\n\nI
   also have a huge passion for contributing to Open Source Software. Filing bugs,
   solving issues, helping newcomers is what I enjoy in my spare time. I was born in
   the United States and came to Japan when I was 10, so am fluent with both English
-  and Japanese conversation. "
+  and Japanese. "
 about_ja: 大阪大学卒業後、Webエンジニアとして、10年ほど業務に従事。チームで密に連携しながら、より良いプロダクトを開発することを信条としている。フロントエンド、バックエンド双方の開発においてアーキテクチャや技術選定を行っている。また、OSSの開発に関してもコミットしている。
+sns:
+  twitter: https://twitter.com/kenfdev
+  github: https://github.com/kenfdev
+  facebook: https://facebook.com/kenfukuyama85
+  linkedin: https://linkedin.com/in/kenfdev

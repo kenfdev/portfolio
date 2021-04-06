@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { PageProps } from 'gatsby';
 import { Home } from '../components/templates/Home';
 import { graphql } from 'gatsby';
+import Layout from '../layout';
 
 interface OwnProps {
   data: any;
@@ -10,7 +11,14 @@ interface OwnProps {
 type Props = OwnProps & PageProps;
 
 const IndexRoute: FunctionComponent<Props> = ({ data }) => {
-  return <Home data={data.allSkillsYaml.nodes[0]} />;
+  const { allSkillsYaml, allBasicsYaml } = data;
+  const [basics] = allBasicsYaml.nodes;
+  const [skills] = allSkillsYaml.nodes;
+  return (
+    <Layout>
+      <Home about={basics.about} skills={skills} sns={basics.sns} />
+    </Layout>
+  );
 };
 
 export const query = graphql`
@@ -40,6 +48,17 @@ export const query = graphql`
         test {
           level
           name
+        }
+      }
+    }
+    allBasicsYaml {
+      nodes {
+        about
+        sns {
+          twitter
+          github
+          facebook
+          linkedin
         }
       }
     }
