@@ -1,16 +1,29 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
-export const Header: FunctionComponent<{ className?: string }> = ({
-  className,
-}) => {
+type Props = {
+  className?: string;
+  location: Location;
+};
+
+const localeLink = (location: Location, path: string) =>
+  location.pathname.startsWith('/ja') ? `/ja${path}` : path;
+
+export const Header: FunctionComponent<Props> = ({ location, className }) => {
   return (
     <Wrapper className={className}>
       <BrandingDiv>Ken Fukuyama</BrandingDiv>
       <Nav>
         <ul>
-          {/* <li>Home</li>
-          <li>Blog</li> */}
+          <li>
+            <StyledLink to={localeLink(location, '/')}>Home</StyledLink>
+          </li>
+          <li>
+            <StyledLink to={localeLink(location, '/experiences')}>
+              Experiences
+            </StyledLink>
+          </li>
         </ul>
       </Nav>
     </Wrapper>
@@ -35,4 +48,8 @@ const Nav = styled.nav`
       margin-left: 1rem;
     }
   }
+`;
+
+const StyledLink = styled(Link)`
+  color: inherit;
 `;

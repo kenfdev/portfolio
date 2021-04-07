@@ -2,13 +2,18 @@ import React, { FunctionComponent } from 'react';
 import { Header } from '../../organisms/Header';
 import styled from 'styled-components';
 
-export const DefaultLayout: FunctionComponent = (props) => {
+type Props = {
+  location: Location;
+};
+
+export const DefaultLayout: FunctionComponent = ({ children, location }) => {
   return (
     <>
       <HeaderWrapper>
-        <FlexHeader />
+        <FlexHeader location={location} />
       </HeaderWrapper>
-      <Container>{props.children}</Container>
+      <Container>{children}</Container>
+      <Footer>© {new Date().getFullYear()}, Ken Fukuyama</Footer>
     </>
   );
 };
@@ -37,4 +42,9 @@ const Container = styled.div`
   margin-top: 70px;
   margin-right: auto;
   margin-left: auto;
+`;
+
+const Footer = styled.footer`
+  padding: 0.5rem;
+  font-size: 0.8rem;
 `;

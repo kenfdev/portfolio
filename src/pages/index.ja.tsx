@@ -10,13 +10,18 @@ interface OwnProps {
 
 type Props = OwnProps & PageProps;
 
-const IndexRoute: FunctionComponent<Props> = ({ data }) => {
+const IndexRoute: FunctionComponent<Props> = ({ location, data }) => {
   const { allSkillsYaml, allBasicsYaml } = data;
   const [basics] = allBasicsYaml.nodes;
   const [skills] = allSkillsYaml.nodes;
   return (
     <Layout>
-      <Home about={basics.about} skills={skills} sns={basics.sns} />
+      <Home
+        location={location}
+        about={basics.about}
+        skills={skills}
+        sns={basics.sns}
+      />
     </Layout>
   );
 };
@@ -53,7 +58,7 @@ export const query = graphql`
     }
     allBasicsYaml {
       nodes {
-        about
+        about: about_ja
         sns {
           twitter
           github

@@ -5,6 +5,7 @@ import { About, Sns } from '../../organisms/About';
 import { Skills, SkillsData } from '../../organisms/Skills';
 import styled from 'styled-components';
 interface Props {
+  location: Location;
   about: string;
   skills: SkillsData;
   sns: Sns;
@@ -21,7 +22,12 @@ function calcSkillsPerRow() {
   return skillsPerRow;
 }
 
-export const Home: FunctionComponent<Props> = ({ about, skills, sns }) => {
+export const Home: FunctionComponent<Props> = ({
+  location,
+  about,
+  skills,
+  sns,
+}) => {
   const [hasRan, setHasRan] = useState(false);
   const [skillsPerRow, setSkillsPerRow] = useState<number>(0);
 
@@ -44,7 +50,7 @@ export const Home: FunctionComponent<Props> = ({ about, skills, sns }) => {
   });
 
   return (
-    <DefaultLayout>
+    <DefaultLayout location={location}>
       <TopProfileWrapper>
         <TopProfile />
       </TopProfileWrapper>
@@ -54,7 +60,6 @@ export const Home: FunctionComponent<Props> = ({ about, skills, sns }) => {
       <SkillsWrapper>
         <Skills skillsPerRow={skillsPerRow} data={skills} />
       </SkillsWrapper>
-      <Footer>© {new Date().getFullYear()}, Ken Fukuyama</Footer>
     </DefaultLayout>
   );
 };
@@ -74,9 +79,4 @@ const AboutWrapper = styled(DivWithBoxShadow)`
 
 const SkillsWrapper = styled.div`
   margin: 1rem 0;
-`;
-
-const Footer = styled.footer`
-  padding: 0.5rem;
-  font-size: 0.8rem;
 `;

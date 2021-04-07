@@ -1,0 +1,125 @@
+---
+experiences:
+  - projectName: Created new features for a Large-scale SaaS
+    projectName_ja: 大規模SaaSの新規機能開発
+    membersCount: 4
+    role: Member
+    role_ja: メンバー
+    description: Architect and developed new features for a large-scale SaaS.
+    description_ja: 大規模なSaaSにおいて新機能の設計・開発・リリースまでのプロセスを担当。
+    skills:
+      - Requirements definition
+      - Architecture design
+      - Develop/Review/Test
+      - SQL performance tuning
+    from: 2020/05/01
+    to: now
+  - projectName: Launch new service
+    projectName_ja: 新規事業立ち上げ
+    membersCount: 15
+    role: Lead Engineer
+    role_ja: リードエンジニア
+    description: Architect a Multi-tenant SaaS application on AWS. Created a code base with Clean Architecture in mind with a light-weight Domain-Driven Design architecture. Encouraging colleagues to write unit/integration tests and integrated Codecov with GitHub PRs to motivate them by visualizing coverage percentage. Also created the code base on how to write e2e tests with Cypress for the front-end engineers. In addition, created the pipeline for CI/CD with CircleCI in combination with Cloud Formation. The pipeline also creates a Review App on every Pull Request to make the review process as smooth as possible. Finally, developed an authorization service using Open Policy Agent as a Go library which has a feature similar to the AWS IAM and also developed a Lambda Authorizer in order to authorize multi-tenant requests in the API Gateway.
+    description_ja: マルチテナントソフトウェアアーキテクチャの基盤をLaravelで作成し、フロントエンドのSPAをVue.js+Vuexを使って基盤作成。ユニット・インテグレーションテストの基盤は、バックエンドのPHPはPHPUnit、GoはGinkgo、TypeScriptはJestを使い、フロントエンドはTypeScriptでJestを用いたテスト基盤と、Cypressによるe2eテストのテスト基盤を作成。CodecovとCIを連携させ、カバレッジをPRに可視化させて、テストの実装を日常的に促進。さらにCI/CDのパイプラインをCircleCIとCloudFormationを組み合わせ、PR毎にレビュー環境が構築されるように自動化。AWS IAMの簡易版権限管理サービスを、Echo+Open Policy Agent（言語はGo）で作成。権限のモデルとしてはABACを採用。
+    skills:
+      - Echo(Go)
+      - Ginkgo
+      - Laravel(PHP)
+      - PHPUnit
+      - Open Policy Agent
+      - AWS Lambda
+      - AWS ECS
+      - AWS API Gateway
+      - TypeScript
+      - Jest
+      - Node.js
+      - Docker
+      - CircleCI
+      - Codecov
+    from: 2018/09/01
+    to: 2020/04/01
+  - projectName: Web Application for Motor Show Event
+    projectName_ja: 自動車イベント用のモックWebアプリケーション作成
+    membersCount: 4
+    role: Lead Front-end Engineer
+    role_ja: リードフロントエンドエンジニア
+    description: Created a web application to communicate the concept of an in-vehicle device system for a major automobile manufacturer. Created using a combination of Angular and D3.js to build a uniquely designed graph.
+    description_ja: 大手自動車メーカーの車載器システムのコンセプトを伝えるWebアプリケーションの作成。独自デザインのグラフを構築するため、AngularとD3.jsを組み合わせて作成。
+    skills:
+      - Angular
+      - D3.js
+    from: 2018/07/01
+    to: 2018/09/01
+  - projectName: Printing service infrastructure migration to AWS
+    projectName_ja: 某プリントサービスのAWSへの移行
+    membersCount: 6
+    role: Infrastructure and Automation Engineer
+    role_ja: インフラ兼オートメーションエンジニア
+    description: Planned and tested solutions to migrate a B2C service from a Japanese cloud provider to AWS. Including a NAS migration from a single LVM node to a DRBD cluster with 2 nodes using LVM. In addition, converting provisioning shell scripts to Ansible and automating AWS resource deployment with Terraform. While it took days to prepare a full environment, using Terraform and Ansible shortened it to hours.
+    description_ja: シングルノードで運用していたNASをDRBDに移行し、冗長構成化。AWSリソースのデプロイ・プロビジョニングの自動化。移行前はインスタンスなどリソースのデプロイは手動で、モジュールのインストールなどプロビジョニングは独自のスクリプトを使用していたものをTerraformとAnsibleにリプレース。属人化していたシステム構築を基本的に誰でも実施できるようにしたことと、Ansibleによる冪等性を意識したプロビジョニングにより、システムのあるべき姿を保証できるようにした。
+    skills:
+      - AWS
+      - Terraform
+      - Ansible
+    from: 2018/01/01
+    to: 2018/06/01
+  - projectName: Online Learning Management System for Electronics
+    projectName_ja: 子供向け電子工作学習管理システム
+    membersCount: 4
+    role: Lead Full Stack Developer
+    role_ja: リードWebアプリケーションフロント兼バックエンドエンジニア
+    description: Led a team in creating an Online Learning Management System for children to learn electronics. All processes used containers and the system was deployed using Rancher (Cattle as the orchestrator and RancherOS for the OS). Set up CI/CD using GitLab and GitLab CI, ran tests using Selenium Grid. Developed the frontend Single Page Application with Angular and the backend using Node.js.
+    description_ja: AngularとNgRxを組み合わせて画面表示とビジネスロジックの切り分けを意識したアーキテクチャで開発。お客様の要望の変化にも強いアプリケーションを作成。学習管理システムとしてはCanvasLMSを採用し、独自仕様部分に関してはNode.jsとArangoDBを採用。公開用のAPIとNode.js→CanvasLMSのAPI連携部分の設計を行った。社内仮想環境にRancher（オーケストレーターはCattle）でコンテナのクラスタを作成し, GitLab + GitLab CIを使って社内テスト環境にCI / CDできるパイプラインを構築。また、Selenium Grid + robotframeworkでe2eも回すことで、一定の品質を常に保てるようにした。本番環境もRancherを使用し、リリース時にはMattermostとボットを組み合わせることで人為的ミスの可能性を減らし、容易にリリース作業が行うことができるようにした。
+    skills:
+      - Angular
+      - Node.js
+      - ArangoDB
+      - GitLab CI
+      - Selenium Grid
+      - robotframework
+      - Rancher
+      - AWS CloudWatch
+      - AWS Lambda
+    from: 2017/03/01
+    to: 2017/12/01
+  - projectName: Travel Time Prediction System
+    projectName_ja: 経路所要時間予測システム
+    membersCount: 10
+    role: Lead Full Stack Developer
+    role_ja: 分散処理システムバックエンドエンジニア
+    description: Developed a Spark application for a travel time prediction system. The machine learning logic was highly customized using R and our team converted it to a Scala Spark application. While the R version took minutes with large amounts of data, we were able to reduce it to around 30 seconds by taking advantage of scaling out the spark executors.
+    description_ja: Rで実験的に作られたプログラムのSparkへの移行
+    skills:
+      - Spark
+      - Scala
+      - Kafka
+      - HBase
+    from: 2016/06/01
+    to: 2017/02/01
+  - projectName: Multiple Projects
+    projectName_ja: 複数案件を担当
+    membersCount: 6
+    role: Lead Front-end Developer
+    role_ja: リードWebアプリケーションフロントエンジニア
+    description: Led multiple projects using Marionette.js and AngularJS. Also built iOS and Android applications using Ionic.
+    description_ja: 複数の案件をMarionette.jsやAngularJSを使ってリード。iOSとAndroidのアプリケーションもIonicを使用して作成。
+    skills:
+      - Marionette.js
+      - AngularJS
+      - Ionic
+    from: 2015/06/01
+    to: 2016/06/01
+  - projectName: Travel Route Analyzing System
+    projectName_ja: 経路確認システム
+    membersCount: 15
+    role: Back-end Developer
+    role_ja: バックエンドエンジニア
+    description: Created a travel route analyzing system as a back-end developer.
+    description_ja: 経路確認システムのサブシステム作成。ユニットテストを書く文化の無いチームにユニットテストを導入。Dependency InjectionとNSubstituteによるモックを利用して、実際のデータベースや外部サービスを利用せずにユニットテストを実行する方法を布教。
+    skills:
+      - C#
+      - PostgreSQL
+      - PostGIS
+      - Dapper
+    from: 2009/07/01
+    to: 2015/05/01
