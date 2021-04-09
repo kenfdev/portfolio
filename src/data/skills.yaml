@@ -8,6 +8,8 @@ language:
     level: 3
   - name: PHP
     level: 3
+  - name: Rego
+    level: 2
 frontendFramework:
   - name: Vue.js
     level: 3

@@ -6,7 +6,10 @@ type Props = {
   location: Location;
 };
 
-export const DefaultLayout: FunctionComponent = ({ children, location }) => {
+export const DefaultLayout: FunctionComponent<Props> = ({
+  children,
+  location,
+}) => {
   return (
     <>
       <HeaderWrapper>
