@@ -1,28 +1,49 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
+import { Dropdown } from '../../molecules/Dropdown';
 
 type Props = {
   className?: string;
   location: Location;
 };
 
-const localeLink = (location: Location, path: string) =>
-  location.pathname.startsWith('/ja') ? `/ja${path}` : path;
+const localeLink = (isJapanese: boolean, path: string) =>
+  isJapanese ? `/ja${path}` : path;
+
+const items = [
+  { id: 'ja', value: '日本語' },
+  { id: 'en', value: 'English' },
+];
 
 export const Header: FunctionComponent<Props> = ({ location, className }) => {
+  const isJapanese = location.pathname.startsWith('/ja');
+
   return (
     <Wrapper className={className}>
       <BrandingDiv>Ken Fukuyama</BrandingDiv>
       <Nav>
         <ul>
           <li>
-            <StyledLink to={localeLink(location, '/')}>Home</StyledLink>
+            <StyledLink to={localeLink(isJapanese, '/')}>Home</StyledLink>
           </li>
           <li>
-            <StyledLink to={localeLink(location, '/experiences')}>
+            <StyledLink to={localeLink(isJapanese, '/experiences')}>
               Experiences
             </StyledLink>
+          </li>
+          <li>
+            <Dropdown
+              selectedId={isJapanese ? 'ja' : 'en'}
+              items={items}
+              onSelected={(lang: string) => {
+                const path =
+                  lang === 'ja'
+                    ? `/ja${location.pathname}`
+                    : location.pathname.replace('/ja', '');
+                navigate(path);
+              }}
+            />
           </li>
         </ul>
       </Nav>
@@ -41,8 +62,8 @@ const BrandingDiv = styled.div`
 `;
 
 const Nav = styled.nav`
-  ul {
-    li {
+  & > ul {
+    & > li {
       display: inline-block;
       list-style: none;
       margin-left: 1rem;
