@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import onClickOutside from 'react-onclickoutside';
 
@@ -13,11 +13,9 @@ export type DropdownItem = {
   value: string;
 };
 
-const DropdownInternal: FunctionComponent<Props> = ({
-  selectedId,
-  items = [],
-  onSelected,
-}) => {
+// only function works with react-onclickoutside
+//  https://github.com/Pomax/react-onclickoutside/issues/327
+function DropdownInternal({ selectedId, items = [], onSelected }: Props) {
   const [open, setOpen] = useState<boolean>(false);
   const toggle = () => setOpen(!open);
 
@@ -53,7 +51,7 @@ const DropdownInternal: FunctionComponent<Props> = ({
       )}
     </Wrapper>
   );
-};
+}
 
 const clickOutsideConfig = {
   handleClickOutside: () => (DropdownInternal as any).handleClickOutside,
