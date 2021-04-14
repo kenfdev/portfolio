@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import styled from 'styled-components';
+import onClickOutside from 'react-onclickoutside';
 
 type Props = {
   items: DropdownItem[];
@@ -12,13 +13,15 @@ export type DropdownItem = {
   value: string;
 };
 
-export const Dropdown: FunctionComponent<Props> = ({
+const DropdownInternal: FunctionComponent<Props> = ({
   selectedId,
   items = [],
   onSelected,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
   const toggle = () => setOpen(!open);
+
+  (DropdownInternal as any).handleClickOutside = () => setOpen(false);
 
   const handleOnClick = (item: DropdownItem) => {
     if (selectedId !== item.id) {
@@ -51,6 +54,12 @@ export const Dropdown: FunctionComponent<Props> = ({
     </Wrapper>
   );
 };
+
+const clickOutsideConfig = {
+  handleClickOutside: () => (DropdownInternal as any).handleClickOutside,
+};
+
+export const Dropdown = onClickOutside(DropdownInternal, clickOutsideConfig);
 
 const Wrapper = styled.div`
   display: flex;
