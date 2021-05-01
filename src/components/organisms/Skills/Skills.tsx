@@ -3,7 +3,12 @@ import { Skill, SkillData } from '../../molecules/Skill';
 import styled from 'styled-components';
 import Section from '../../shared/Section';
 import SectionTitle from '../../shared/SectionTitle';
+import { LevelDescriptions } from './LevelDescriptions';
 
+export interface LevelDescription {
+  level: number;
+  description: string;
+}
 export interface SkillsData {
   language: SkillData[];
   frontendFramework: SkillData[];
@@ -15,13 +20,15 @@ export interface SkillsData {
 
 interface Props {
   className?: string;
-  data: SkillsData;
+  levelDescriptions: LevelDescription[];
+  skills: SkillsData;
   skillsPerRow: number;
 }
 
 export const Skills: FunctionComponent<Props> = ({
   className,
-  data: skills,
+  levelDescriptions,
+  skills,
   skillsPerRow,
 }) => {
   const flexBasis = `${100.0 / skillsPerRow}%`;
@@ -47,6 +54,7 @@ export const Skills: FunctionComponent<Props> = ({
         <FlexSkill flexBasis={flexBasis}>
           <Skill name="Infrastructure" data={skills.infrastructure} />
         </FlexSkill>
+        <PositionedLevelDescriptions data={levelDescriptions} />
       </Container>
     </Section>
   );
@@ -61,8 +69,15 @@ const FlexSkill = styled.div`
   ${(props: { flexBasis: string }) => `flex: 0 0 ${props.flexBasis}`};
 `;
 
+const PositionedLevelDescriptions = styled(LevelDescriptions)`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+`;
+
 const Container = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  position: relative;
 `;

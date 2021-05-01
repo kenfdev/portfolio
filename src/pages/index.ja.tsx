@@ -14,12 +14,14 @@ const IndexRoute: FunctionComponent<Props> = ({ location, data }) => {
   const { allSkillsYaml, allBasicsYaml } = data;
   const [basics] = allBasicsYaml.nodes;
   const [skills] = allSkillsYaml.nodes;
+  console.log(skills);
   return (
     <Layout>
       <Home
         location={location}
         about={basics.about}
-        skills={skills}
+        levelDescriptions={skills.levelDescriptions}
+        skills={skills.skills}
         sns={basics.sns}
       />
     </Layout>
@@ -30,29 +32,35 @@ export const query = graphql`
   {
     allSkillsYaml {
       nodes {
-        backendFramework {
-          name
+        levelDescriptions: levelDescriptions_ja {
           level
+          description
         }
-        frontendFramework {
-          level
-          name
-        }
-        database {
-          level
-          name
-        }
-        infrastructure {
-          level
-          name
-        }
-        language {
-          level
-          name
-        }
-        test {
-          level
-          name
+        skills {
+          backendFramework {
+            name
+            level
+          }
+          frontendFramework {
+            level
+            name
+          }
+          database {
+            level
+            name
+          }
+          infrastructure {
+            level
+            name
+          }
+          language {
+            level
+            name
+          }
+          test {
+            level
+            name
+          }
         }
       }
     }

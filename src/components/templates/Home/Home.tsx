@@ -2,12 +2,13 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { DefaultLayout } from '../DefaultLayout';
 import { TopProfile } from '../../organisms/TopProfile';
 import { About, Sns } from '../../organisms/About';
-import { Skills, SkillsData } from '../../organisms/Skills';
+import { Skills, SkillsData, LevelDescription } from '../../organisms/Skills';
 import styled from 'styled-components';
 interface Props {
   location: Location;
   about: string;
   skills: SkillsData;
+  levelDescriptions: LevelDescription[];
   sns: Sns;
 }
 
@@ -26,6 +27,7 @@ export const Home: FunctionComponent<Props> = ({
   location,
   about,
   skills,
+  levelDescriptions,
   sns,
 }) => {
   const [hasRan, setHasRan] = useState(false);
@@ -58,7 +60,11 @@ export const Home: FunctionComponent<Props> = ({
         <About content={about} sns={sns} />
       </AboutWrapper>
       <SkillsWrapper>
-        <Skills skillsPerRow={skillsPerRow} data={skills} />
+        <Skills
+          skillsPerRow={skillsPerRow}
+          levelDescriptions={levelDescriptions}
+          skills={skills}
+        />
       </SkillsWrapper>
     </DefaultLayout>
   );

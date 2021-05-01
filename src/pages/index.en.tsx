@@ -19,7 +19,8 @@ const IndexRoute: FunctionComponent<Props> = ({ location, data }) => {
       <Home
         location={location}
         about={basics.about}
-        skills={skills}
+        levelDescriptions={skills.levelDescriptions}
+        skills={skills.skills}
         sns={basics.sns}
       />
     </Layout>
@@ -30,29 +31,35 @@ export const query = graphql`
   {
     allSkillsYaml {
       nodes {
-        backendFramework {
-          name
+        levelDescriptions {
           level
+          description
         }
-        frontendFramework {
-          level
-          name
-        }
-        database {
-          level
-          name
-        }
-        infrastructure {
-          level
-          name
-        }
-        language {
-          level
-          name
-        }
-        test {
-          level
-          name
+        skills {
+          backendFramework {
+            name
+            level
+          }
+          frontendFramework {
+            level
+            name
+          }
+          database {
+            level
+            name
+          }
+          infrastructure {
+            level
+            name
+          }
+          language {
+            level
+            name
+          }
+          test {
+            level
+            name
+          }
         }
       }
     }
