@@ -50,10 +50,18 @@ const Wrapper = styled.div`
 
 const LinkItem = styled.a`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ThumbnailWrapper = styled.div`
   flex: 1;
+
+  @media (max-width: 768px) {
+    max-width: 300px;
+    margin: auto;
+  }
 `;
 
 const ContentWrapper = styled.div`
