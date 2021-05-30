@@ -33,6 +33,11 @@ export const Header: FunctionComponent<Props> = ({ location, className }) => {
             </StyledLink>
           </li>
           <li>
+            <StyledLink to={localeLink(isJapanese, '/courses')}>
+              Courses
+            </StyledLink>
+          </li>
+          <li>
             <Dropdown
               selectedId={isJapanese ? 'ja' : 'en'}
               items={items}
