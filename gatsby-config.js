@@ -1,16 +1,17 @@
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: 'G-4PYHHZYCHB',
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-        // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0,
-        // Defers execution of google analytics script after page load
-        defer: false,
+        trackingIds: ['UA-44430359-11'],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
       },
     },
     `gatsby-plugin-image`,
