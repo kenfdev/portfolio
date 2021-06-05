@@ -1,4 +1,11 @@
 module.exports = {
+  siteMetadata: {
+    title: `Ken Fukuyama's Portfolio Site`,
+    siteUrl: `https://kenev.net/`,
+    description: `Ken Fukuyama's portfolio site.`,
+    defaultImage: '/ken.jpg',
+    twitterUsername: 'kenfdev'
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-google-gtag`,
