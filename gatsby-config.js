@@ -4,7 +4,7 @@ module.exports = {
     siteUrl: `https://kenev.net/`,
     description: `Ken Fukuyama's portfolio site.`,
     defaultImage: '/ken.jpg',
-    twitterUsername: 'kenfdev'
+    twitterUsername: 'kenfdev',
   },
   plugins: [
     {
@@ -21,6 +21,7 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
