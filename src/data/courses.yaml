@@ -2,6 +2,13 @@
 description: I deliver online courses on Udemy as an instructor. 
 description_ja: Udemyでオンラインコースを配信しています。以下のリンクからは必ずクーポンが適用されるのでぜひご活用ください。
 courses:
+  - courseName: 【世界で70万人が受講】Web Developer Bootcamp 2021（日本語版）
+    description: The Japanese localized version of "The Web Developer Bootcamp" by Colt Steele
+    description_ja: 【2021最新版】世界で70万人以上が受講したThe Web Developer Bootcamp完全日本語版！これ一本でフロントエンドからバックエンド、セキュリティからアプリのデプロイを包括的に学ぶ。
+    thumbnail: /wdb.png
+    thumbnailAlt: The Web Developer Bootcamp
+    thumbnailAlt_ja: Web Developer Bootcamp 2021（日本語版）
+    couponUrl: https://www.udemy.com/course/the-web-developer-bootcamp-2021-japan/?couponCode=DC9914BB5F71798C6D47
   - courseName: 【世界で4万人が受講】JavaScriptエンジニアのためのES6完全ガイド
     description: The Japanese localized version of "ES6 Javascript The Complete Developer's Guide" by Stephen Grider
     description_ja: 述べ78万人の受講生を抱えるStephen Grider氏による大人気コースの完全日本語版。JSのメソッドのforEach、map、reduce、ES6で新しく登場した関数のデフォルト値やクラス、改善されたオブジェクトリテラルについて学ぶ。
