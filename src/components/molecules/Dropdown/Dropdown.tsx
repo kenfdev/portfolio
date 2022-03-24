@@ -92,7 +92,6 @@ const Caret = styled.span`
 const List = styled.ul`
   position: absolute;
   top: 10px;
-  right: 0px;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   padding: 0;
   margin: 0;
