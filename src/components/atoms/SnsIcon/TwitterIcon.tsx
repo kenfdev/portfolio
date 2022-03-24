@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-const Image = require('../../../assets/twitter.svg') as string;
+import Image from '../../../assets/twitter.svg';
 
 export const TwitterIcon: FunctionComponent<{ className?: string }> = ({
   className,
