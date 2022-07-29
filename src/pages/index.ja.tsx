@@ -14,7 +14,6 @@ const IndexRoute: FunctionComponent<Props> = ({ location, data }) => {
   const { allSkillsYaml, allBasicsYaml } = data;
   const [basics] = allBasicsYaml.nodes;
   const [skills] = allSkillsYaml.nodes;
-  console.log(skills);
   return (
     <Layout>
       <Home

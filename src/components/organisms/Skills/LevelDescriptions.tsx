@@ -13,7 +13,7 @@ export const LevelDescriptions: FunctionComponent<Prop> = ({
 }) => {
   const renderLevelDescriptions = () => {
     return data.map((v) => (
-      <li>
+      <li key={v.level}>
         {v.level}: {v.description}
       </li>
     ));
