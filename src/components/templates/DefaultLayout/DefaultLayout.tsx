@@ -1,15 +1,13 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Header } from '../../organisms/Header';
 import styled from 'styled-components';
 
 type Props = {
   location: Location;
+  children: ReactNode;
 };
 
-export const DefaultLayout: FunctionComponent<Props> = ({
-  children,
-  location,
-}) => {
+export const DefaultLayout: FC<Props> = ({ children, location }) => {
   return (
     <>
       <HeaderWrapper>

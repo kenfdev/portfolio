@@ -23,7 +23,7 @@ function DropdownInternal({ selectedId, items = [], onSelected }: Props) {
 
   const handleOnClick = (item: DropdownItem) => {
     if (selectedId !== item.id) {
-      onSelected(item.id);
+      onSelected?.(item.id);
     }
     setOpen(false);
   };
@@ -34,7 +34,7 @@ function DropdownInternal({ selectedId, items = [], onSelected }: Props) {
     <Wrapper>
       <Header tabIndex={0} role="button" onKeyPress={toggle} onClick={toggle}>
         <Title>
-          <span>{selectedValue.value}</span>
+          <span>{selectedValue?.value}</span>
           <Caret />
         </Title>
       </Header>

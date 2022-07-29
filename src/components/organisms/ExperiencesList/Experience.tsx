@@ -24,9 +24,7 @@ export const Experience: FunctionComponent<Props> = ({ data }) => (
         <div>Role: {data.role}</div>
         <div>Members: {data.membersCount}</div>
       </div>
-      <div>
-        {data.from} - {data.to}
-      </div>
+      <div>{`${data.from} - ${data.to}`}</div>
     </Header>
     <Description>{data.description}</Description>
     <SkillsWrapper>Skills:</SkillsWrapper>

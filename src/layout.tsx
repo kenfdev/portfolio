@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default function Layout({ children }) {
+interface Props {
+  children: ReactNode;
+}
+
+const Layout: FC<Props> = ({ children }) => {
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
   const { description, siteUrl, title, twitterUsername, defaultImage } =
@@ -44,7 +48,7 @@ export default function Layout({ children }) {
       {children}
     </div>
   );
-}
+};
 
 const query = graphql`
   query SEO {
@@ -59,3 +63,5 @@ const query = graphql`
     }
   }
 `;
+
+export default Layout;
