@@ -19,19 +19,15 @@ export const { styled, css } = createStitches({
       switch (value) {
         case 'h1':
           return {
-            // not implemented
+            fontSize: 'xxx-large',
           };
         case 'h2':
           return {
-            // not implemented
+            fontSize: 'xx-large',
           };
         case 'h3':
           return {
-            // not implemented
-          };
-        default:
-          return {
-            // not implemented
+            fontSize: 'x-large',
           };
       }
     },
