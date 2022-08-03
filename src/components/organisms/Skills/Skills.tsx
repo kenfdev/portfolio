@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { styled } from '../../../styles/stitches';
 import { Box } from '../../general/Box';
-import { Skill, SkillData } from '../../molecules/Skill';
-import Section from '../../shared/Section';
-import SectionTitle from '../../shared/SectionTitle';
+import SectionTitle from '../../general/SectionTitle/SectionTitle';
 import { LevelDescriptions } from './LevelDescriptions';
+import Section from '../../general/Section/Section';
+import { Skill, SkillData } from '../../dataDisplay/Skill';
 
 export interface LevelDescription {
   level: number;

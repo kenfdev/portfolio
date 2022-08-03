@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { Link, navigate } from 'gatsby';
-import { Dropdown } from '../../molecules/Dropdown';
 import { styled } from '../../../styles/stitches';
+import { Dropdown } from '../../dataDisplay/Dropdown';
 
 type Props = {
   className?: string;

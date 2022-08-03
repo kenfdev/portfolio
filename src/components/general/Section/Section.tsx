@@ -1,4 +1,4 @@
-import { styled } from '../../styles/stitches';
+import { styled } from "../../../styles/stitches";
 
 const Section = styled('section', {
   fontSize: '1.1rem',

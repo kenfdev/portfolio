@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { DefaultLayout } from '../DefaultLayout';
 import { UdemyCourseList, CourseData } from '../../organisms/UdemyCourseList';
-import SectionTitle from '../../shared/SectionTitle';
+import SectionTitle from '../../general/SectionTitle/SectionTitle';
 import { styled } from '../../../styles/stitches';
 
 interface Props {

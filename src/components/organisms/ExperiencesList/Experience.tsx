@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { styled } from '../../../styles/stitches';
-import { Tag } from '../../atoms/Tag';
+import { Tag } from '../../dataDisplay/Tag';
 import { Box } from '../../general/Box';
 
 export type ExperienceData = {

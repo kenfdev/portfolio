@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { FaTwitter, FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { styled } from '../../../styles/stitches';
 
-import Section from '../../shared/Section';
-import SectionTitle from '../../shared/SectionTitle';
+import Section from '../../general/Section/Section';
+import SectionTitle from '../../general/SectionTitle/SectionTitle';
 
 export type Sns = {
   twitter: string;
