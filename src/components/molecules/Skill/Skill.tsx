@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import {
   Radar,
   RadarChart,
@@ -7,7 +7,7 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from 'recharts';
-import styled from 'styled-components';
+import { Box } from '../../general/Box';
 
 export interface SkillData {
   name: string;
@@ -22,7 +22,9 @@ interface Props {
 export const Skill: FunctionComponent<Props> = ({ name, data }) => {
   return (
     <>
-      <ChartTitleDiv>{name}</ChartTitleDiv>
+      <Box css={{ textAlign: 'center', height: '5%', mb: '0.5rem' }}>
+        {name}
+      </Box>
       <ResponsiveContainer width="99%" aspect={2} height="95%">
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />
@@ -40,9 +42,3 @@ export const Skill: FunctionComponent<Props> = ({ name, data }) => {
     </>
   );
 };
-
-const ChartTitleDiv = styled.div`
-  text-align: center;
-  height: 5%;
-  margin-bottom: 0.5rem;
-`;

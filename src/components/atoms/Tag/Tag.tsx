@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import { styled } from '../../../styles/stitches';
 
-export const Tag = styled.span`
-  border-radius: 50px /150%;
-  border: 1px solid #e5e5e5;
-  padding: 0.1rem 0.3rem;
-`;
+export const Tag = styled('span', {
+  borderRadius: '50px /150%',
+  border: '1px solid $gray300',
+  padding: '3px 10px',
+  backgroundColor: '$gray200'
+});

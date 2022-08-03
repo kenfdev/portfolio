@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import { FC } from 'react';
+import { styled } from '../../../styles/stitches';
+import { Box } from '../../general/Box';
 import { Skill, SkillData } from '../../molecules/Skill';
-import styled from 'styled-components';
 import Section from '../../shared/Section';
 import SectionTitle from '../../shared/SectionTitle';
 import { LevelDescriptions } from './LevelDescriptions';
@@ -18,66 +19,51 @@ export interface SkillsData {
   infrastructure: SkillData[];
 }
 
+interface DisplaySkill {
+  name: string;
+  data: SkillData[];
+}
+
 interface Props {
   className?: string;
   levelDescriptions: LevelDescription[];
   skills: SkillsData;
-  skillsPerRow: number;
 }
 
-export const Skills: FunctionComponent<Props> = ({
-  className,
-  levelDescriptions,
-  skills,
-  skillsPerRow,
-}) => {
-  const flexBasis = `${100.0 / skillsPerRow}%`;
+export const Skills: FC<Props> = ({ className, levelDescriptions, skills }) => {
+  const displaySkills: DisplaySkill[] = [
+    { name: 'Language', data: skills.language },
+    { name: 'Front-end Frameworks', data: skills.frontendFramework },
+    { name: 'Back-end Frameworks', data: skills.backendFramework },
+    { name: 'Testing', data: skills.test },
+    { name: 'Databases', data: skills.database },
+    { name: 'Infrastructure', data: skills.infrastructure },
+  ];
+
   return (
     <Section className={className}>
-      <CenteredSectionTitle>Skills</CenteredSectionTitle>
+      <SectionTitle css={{ textAlign: 'center' }}>Skills</SectionTitle>
       <Container>
-        <FlexSkill flexBasis={flexBasis}>
-          <Skill name="Language" data={skills.language} />
-        </FlexSkill>
-        <FlexSkill flexBasis={flexBasis}>
-          <Skill name="Front-end Frameworks" data={skills.frontendFramework} />
-        </FlexSkill>
-        <FlexSkill flexBasis={flexBasis}>
-          <Skill name="Back-end Frameworks" data={skills.backendFramework} />
-        </FlexSkill>
-        <FlexSkill flexBasis={flexBasis}>
-          <Skill name="Testing" data={skills.test} />
-        </FlexSkill>
-        <FlexSkill flexBasis={flexBasis}>
-          <Skill name="Databases" data={skills.database} />
-        </FlexSkill>
-        <FlexSkill flexBasis={flexBasis}>
-          <Skill name="Infrastructure" data={skills.infrastructure} />
-        </FlexSkill>
-        <PositionedLevelDescriptions data={levelDescriptions} />
+        {displaySkills.map((v) => (
+          <Box css={{ p: '1rem 0' }} key={v.name}>
+            <Skill name={v.name} data={v.data} />
+          </Box>
+        ))}
       </Container>
+      <Box css={{ textAlign: 'right' }}>
+        <LevelDescriptions data={levelDescriptions} />
+      </Box>
     </Section>
   );
 };
 
-const CenteredSectionTitle = styled(SectionTitle)`
-  text-align: center;
-`;
-
-const FlexSkill = styled.div`
-  padding: 1rem 0 1rem 0;
-  ${(props: { flexBasis: string }) => `flex: 0 0 ${props.flexBasis}`};
-`;
-
-const PositionedLevelDescriptions = styled(LevelDescriptions)`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-`;
-
-const Container = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  position: relative;
-`;
+const Container = styled('div', {
+  display: 'grid',
+  width: '100%',
+  '@bp2': {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  },
+  '@bp3': {
+    gridTemplateColumns: 'repeat(3, 1fr)',
+  },
+});

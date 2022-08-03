@@ -1,15 +1,18 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent } from 'react';
 import { DefaultLayout } from '../DefaultLayout';
 import { ExperiencesList } from '../../organisms/ExperiencesList';
-import styled from 'styled-components';
 import SectionTitle from '../../shared/SectionTitle';
+import { styled } from '../../../styles/stitches';
 
 interface Props {
   experiences: any[];
   location: Location;
 }
 
-export const Experiences: FunctionComponent<Props> = ({ experiences, location }) => {
+export const Experiences: FunctionComponent<Props> = ({
+  experiences,
+  location,
+}) => {
   return (
     <DefaultLayout location={location}>
       <Wrapper>
@@ -20,8 +23,8 @@ export const Experiences: FunctionComponent<Props> = ({ experiences, location })
   );
 };
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  padding: 1rem 1rem 0 1rem;
-  max-width: 50rem;
-`;
+const Wrapper = styled('div', {
+  margin: '0 auto',
+  padding: '1rem 1rem 0 1rem',
+  maxWidth: '50rem',
+});

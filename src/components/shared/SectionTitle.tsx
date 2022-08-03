@@ -1,8 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import { styled } from '../../styles/stitches';
 
-const SectionTitle = styled.h3`
-  margin-bottom: 1rem;
-`;
+const SectionTitle = styled('h3', {
+  marginBottom: '1rem',
+});
 
 export default SectionTitle;

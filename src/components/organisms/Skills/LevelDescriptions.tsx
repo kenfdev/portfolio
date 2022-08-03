@@ -1,37 +1,26 @@
-import React, { FunctionComponent } from 'react';
+import { FC } from 'react';
+import { styled } from '../../../styles/stitches';
+import { Box } from '../../general/Box';
 import { LevelDescription } from './Skills';
-import styled from 'styled-components';
 
-type Prop = {
+type Props = {
   className?: string;
   data: LevelDescription[];
 };
 
-export const LevelDescriptions: FunctionComponent<Prop> = ({
-  data,
-  className,
-}) => {
-  const renderLevelDescriptions = () => {
-    return data.map((v) => (
-      <li key={v.level}>
-        {v.level}: {v.description}
-      </li>
-    ));
-  };
+export const LevelDescriptions: FC<Props> = ({ data, className }) => {
   return (
-    <Wrapper className={className}>
-      <Descriptions>{renderLevelDescriptions()}</Descriptions>
-    </Wrapper>
+    <Box css={{ fontSize: '0.8rem' }} className={className}>
+      <ul>
+        {data.map((v) => (
+          <ListItem key={v.level}>{`${v.level}: ${v.description}`}</ListItem>
+        ))}
+      </ul>
+    </Box>
   );
 };
 
-const Wrapper = styled.div`
-  font-size: 0.8rem;
-`;
-
-const Descriptions = styled.ul`
-  li {
-    display: inline-block;
-    margin-right: 0.5rem;
-  }
-`;
+const ListItem = styled('li', {
+  display: 'inline-block',
+  marginRight: '0.5rem',
+});

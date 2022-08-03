@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import { useState } from 'react';
 import onClickOutside from 'react-onclickoutside';
+import { styled } from '../../../styles/stitches';
+import { Box } from '../../general/Box';
 
 type Props = {
   items: DropdownItem[];
@@ -33,10 +34,10 @@ function DropdownInternal({ selectedId, items = [], onSelected }: Props) {
   return (
     <Wrapper>
       <Header tabIndex={0} role="button" onKeyPress={toggle} onClick={toggle}>
-        <Title>
+        <Box>
           <span>{selectedValue?.value}</span>
           <Caret />
-        </Title>
+        </Box>
       </Header>
       {open && (
         <List>
@@ -59,78 +60,74 @@ const clickOutsideConfig = {
 
 export const Dropdown = onClickOutside(DropdownInternal, clickOutsideConfig);
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-`;
+const Wrapper = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  position: 'relative',
+});
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  width: 100%;
-`;
+const Header = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  cursor: 'pointer',
+  width: '100%',
+});
 
-const Title = styled.div``;
+const Caret = styled('span', {
+  marginLeft: '3px',
+  marginBottom: '2px',
+  display: 'inline-block',
+  width: 0,
+  height: 0,
+  verticalAlign: 'middle',
+  content: '',
+  borderTopStyle: 'solid',
+  borderTopWidth: '4px',
+  borderRight: '4px solid transparent',
+  borderBottom: '0 solid transparent',
+  borderLeft: '4px solid transparent',
+});
 
-const Caret = styled.span`
-  margin-left: 3px;
-  margin-bottom: 2px;
-  display: inline-block;
-  width: 0;
-  height: 0;
-  vertical-align: middle;
-  content: '';
-  border-top-style: solid;
-  border-top-width: 4px;
-  border-right: 4px solid transparent;
-  border-bottom: 0 solid transparent;
-  border-left: 4px solid transparent;
-`;
+const List = styled('ul', {
+  position: 'absolute',
+  top: '10px',
+  right: '0px',
+  boxShadow: '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)',
+  padding: 0,
+  margin: 0,
+  marginTop: '20px',
 
-const List = styled.ul`
-  position: absolute;
-  top: 10px;
-  right: 0px;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  padding: 0;
-  margin: 0;
-  margin-top: 20px;
+  li: {
+    listStyleType: 'none',
+    '&:first-of-type': {
+      '> button': {
+        borderTop: '1px solid #ccc',
+        borderTopLeftRadius: '4px',
+        borderTopRightRadius: '4px',
+      },
+    },
 
-  li {
-    list-style-type: none;
+    '&:last-of-type > button': {
+      borderBottomLeftRadius: '4px',
+      borderBottomRightRadius: '4px',
+    },
 
-    &:first-of-type {
-      > button {
-        border-top: 1px solid #ccc;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-      }
-    }
+    button: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      backgroundColor: 'white',
+      padding: '15px 20px 15px 20px',
+      border: 0,
+      borderBottom: '1px solid #ccc',
+      width: '100%',
+      textAlign: 'left',
+      borderLeft: '1px solid #ccc',
+      borderRight: '1px solid #ccc',
 
-    &:last-of-type > button {
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-    }
-
-    button {
-      display: flex;
-      justify-content: space-between;
-      background-color: white;
-      padding: 15px 20px 15px 20px;
-      border: 0;
-      border-bottom: 1px solid #ccc;
-      width: 100%;
-      text-align: left;
-      border-left: 1px solid #ccc;
-      border-right: 1px solid #ccc;
-
-      &:hover,
-      &:focus {
-        cursor: pointer;
-        background-color: #ccc;
-      }
-    }
-  }
-`;
+      '&:hover,&:focus': {
+        cursor: 'pointer',
+        backgroundColor: '#ccc',
+      },
+    },
+  },
+});

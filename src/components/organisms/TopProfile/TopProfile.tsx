@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
+import { H1, H2 } from '../../general/Text';
+import { Box } from '../../general/Box';
 
 export const TopProfile: FunctionComponent = () => (
   <>
@@ -12,19 +13,9 @@ export const TopProfile: FunctionComponent = () => (
       height={150}
       imgStyle={{ borderRadius: '50%' }}
     />
-    <div>
-      <TitleDiv>Ken Fukuyama</TitleDiv>
-      <SubTitleDiv>Web Developer</SubTitleDiv>
-    </div>
+    <Box>
+      <H1>Ken Fukuyama</H1>
+      <H2 css={{ color: '$gray400' }}>Web Developer</H2>
+    </Box>
   </>
 );
-
-const TitleDiv = styled.div`
-  font-size: 3rem;
-  font-weight: bold;
-`;
-
-const SubTitleDiv = styled.div`
-  font-size: 2rem;
-  color: #cccccc;
-`;
