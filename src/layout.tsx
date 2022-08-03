@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
+import { Box } from './components/general/Box';
 
 interface Props {
   children: ReactNode;
@@ -20,7 +21,7 @@ const Layout: FC<Props> = ({ children }) => {
   };
 
   return (
-    <div>
+    <Box css={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Helmet title={seo.title}>
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
@@ -46,7 +47,7 @@ const Layout: FC<Props> = ({ children }) => {
         />
       </Helmet>
       {children}
-    </div>
+    </Box>
   );
 };
 

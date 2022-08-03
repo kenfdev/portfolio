@@ -16,7 +16,7 @@ export const Experiences: FunctionComponent<Props> = ({
   return (
     <DefaultLayout location={location}>
       <Wrapper>
-        <SectionTitle>Experiences</SectionTitle>
+        <SectionTitle css={{ typography: 'h2' }}>Experiences</SectionTitle>
         <ExperiencesList experiences={experiences} />
       </Wrapper>
     </DefaultLayout>

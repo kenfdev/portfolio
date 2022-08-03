@@ -46,6 +46,8 @@ const Container = styled('div', {
 });
 
 const Footer = styled('footer', {
+  textAlign: 'center',
+  marginTop: 'auto',
   padding: '0.5rem',
   fontSize: '0.8rem',
 });

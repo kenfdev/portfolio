@@ -9,7 +9,7 @@ type Props = {
 export const ExperiencesList: FunctionComponent<Props> = ({ experiences }) => (
   <div>
     {experiences.map((data, idx) => (
-      <Box css={{ mb: '1rem' }} key={idx}>
+      <Box css={{ mb: '3rem' }} key={idx}>
         <Experience data={data} />
       </Box>
     ))}

@@ -2,6 +2,7 @@ import { FunctionComponent } from 'react';
 import { styled } from '../../../styles/stitches';
 import { Tag } from '../../dataDisplay/Tag';
 import { Box } from '../../general/Box';
+import { H3 } from '../../general/Text';
 
 export type ExperienceData = {
   projectName: string;
@@ -19,11 +20,11 @@ type Props = {
 
 export const Experience: FunctionComponent<Props> = ({ data }) => (
   <Box css={{ mb: '2rem' }}>
-    <h3>{data.projectName}</h3>
+    <H3>{data.projectName}</H3>
     <Box css={{ display: 'flex', justifyContent: 'space-between', mb: '1rem' }}>
       <div>
         <div>Role: {data.role}</div>
-        <div>Members: {data.membersCount}</div>
+        {data.membersCount && <div>Members: {data.membersCount}</div>}
       </div>
       <div>{`${data.from} - ${data.to}`}</div>
     </Box>

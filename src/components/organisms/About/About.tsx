@@ -22,7 +22,7 @@ export const About: FC<Props> = ({
   sns: { facebook, github, linkedin, twitter },
 }) => {
   return (
-    <Section>
+    <Section css={{ position: 'relative' }}>
       <SectionTitle>About me</SectionTitle>
       <Container>
         <Content>{content}</Content>
@@ -48,7 +48,9 @@ export const About: FC<Props> = ({
 };
 
 const Content = styled('div', {
-  padding: '0 2rem 0 0',
+  '@bp2': {
+    mb: '3rem',
+  },
 });
 
 const IconWrapper = styled('a', {
@@ -63,10 +65,13 @@ const SnsIcons = styled('div', {
   flexDirection: 'row',
   justifyContent: 'space-around',
   '@bp2': {
+    position: 'absolute',
+    right: '-2rem',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     gap: '1rem',
     margin: 0,
+    width: 'inherit',
   },
 });
 
