@@ -1,5 +1,44 @@
 ---
 experiences:
+  - projectName: Serverless Application Technical Supporter
+    projectName_ja: サーバーレスアプリケーションの開発支援
+    role: Technical Advisor
+    role_ja: テクニカルアドバイザー
+    description: Provided technical advise related to developing serverless applications.
+    description_ja: 学生向けハッカソンのAWSやフロントエンド開発におけるアドバイザリーを行った。
+    skills:
+      - AWS Lambda
+      - AWS DynamoDB
+      - AWS Step Functions
+      - Vue.js
+      - React
+    from: 2022/09/01
+    to: Now
+  - projectName: Developed payment feature using Stripe
+    projectName_ja: Stripe決済機能導入
+    role: Lead Engineer
+    role_ja: リードエンジニア
+    description: Implemented payment feature to a system using Stripe Checkout (Serverless Framework + Lambda + Vanilla JS).
+    description_ja: Stripe Checkoutによる決済機能をシステムに実装（Serverless Framework + Lambda + Vanilla JS）。
+    skills:
+      - JavaScript
+      - Stripe
+      - Serverless Framework
+    from: 2022/01/01
+    to: 2022/02/31
+  - projectName: Hackathon technical advisor
+    projectName_ja: ハッカソンテクニカルアドバイザー
+    role: Technical Advisor
+    role_ja: テクニカルアドバイザー
+    description: Provided technical advise related to AWS and modern front-end development to students attending a hackathon.
+    description_ja: 学生向けハッカソンのAWSやフロントエンド開発におけるアドバイザリーを行った。
+    skills:
+      - AWS
+      - Vue.js
+      - React
+      - Go
+    from: 2021/08/24
+    to: 2021/08/27
   - projectName: Created new features for a Large-scale SaaS
     projectName_ja: 大規模SaaSの新規機能開発
     membersCount: 4
@@ -12,8 +51,12 @@ experiences:
       - Architecture design
       - Develop/Review/Test
       - SQL performance tuning
+      - AWS
+      - C#
+      - Dapper
+      - PostgreSQL
     from: 2020/05/01
-    to: now
+    to: 2021/06/30
   - projectName: Launch new service
     projectName_ja: 新規事業立ち上げ
     membersCount: 15

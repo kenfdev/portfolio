@@ -1,9 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import { FC } from 'react';
 import { PageProps } from 'gatsby';
 import { Experiences } from '../components/templates/Experiences';
 import { graphql } from 'gatsby';
 import Layout from '../layout';
-import styled from 'styled-components';
 
 interface OwnProps {
   data: any;
@@ -11,7 +10,7 @@ interface OwnProps {
 
 type Props = OwnProps & PageProps;
 
-const IndexRoute: FunctionComponent<Props> = ({ location, data }) => {
+const IndexRoute: FC<Props> = ({ location, data }) => {
   const { allExperiencesYaml } = data;
   const [experiences] = allExperiencesYaml.nodes;
   return (

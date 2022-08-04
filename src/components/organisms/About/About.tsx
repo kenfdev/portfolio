@@ -1,13 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import {
-  TwitterIcon,
-  FacebookIcon,
-  LinkedInIcon,
-  GitHubIcon,
-} from '../../atoms/SnsIcon';
-import styled from 'styled-components';
-import Section from '../../shared/Section';
-import SectionTitle from '../../shared/SectionTitle';
+import { FC } from 'react';
+import { FaTwitter, FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { styled } from '../../../styles/stitches';
+
+import Section from '../../general/Section/Section';
+import SectionTitle from '../../general/SectionTitle/SectionTitle';
 
 export type Sns = {
   twitter: string;
@@ -21,54 +17,68 @@ type Props = {
   sns: Sns;
 };
 
-export const About: FunctionComponent<Props> = ({ content, sns }) => {
+export const About: FC<Props> = ({
+  content,
+  sns: { facebook, github, linkedin, twitter },
+}) => {
   return (
-    <Section>
+    <Section css={{ position: 'relative' }}>
       <SectionTitle>About me</SectionTitle>
-      <ContentDiv>
-        <LeftDiv>{content}</LeftDiv>
-        <RightDiv>
-          <IconAnchor href={sns.twitter} target="_blank">
-            <TwitterIcon />
-          </IconAnchor>
-          <IconAnchor href={sns.facebook} target="_blank">
-            <FacebookIcon />
-          </IconAnchor>
-          <IconAnchor href={sns.github} target="_blank">
-            <GitHubIcon />
-          </IconAnchor>
-          <IconAnchor href={sns.linkedin} target="_blank">
-            <LinkedInIcon />
-          </IconAnchor>
-        </RightDiv>
-      </ContentDiv>
+      <Container>
+        <Content>{content}</Content>
+
+        <SnsIcons>
+          <IconWrapper href={twitter} target="_blank">
+            <FaTwitter size={32} />
+          </IconWrapper>
+
+          <IconWrapper href={facebook} target="_blank">
+            <FaFacebook size={32} />
+          </IconWrapper>
+          <IconWrapper href={github} target="_blank">
+            <FaGithub size={32} />
+          </IconWrapper>
+          <IconWrapper href={linkedin} target="_blank">
+            <FaLinkedin size={32} />
+          </IconWrapper>
+        </SnsIcons>
+      </Container>
     </Section>
   );
 };
 
-const IconAnchor = styled.a`
-  margin-bottom: 1rem;
-`;
+const Content = styled('div', {
+  '@bp2': {
+    mb: '3rem',
+  },
+});
 
-const LeftDiv = styled.div`
-  padding: 0 2rem 0 0;
-`;
+const IconWrapper = styled('a', {
+  width: '2rem',
+  height: '2rem',
+});
 
-const RightDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  @media (max-width: 768px) {
-    margin: 1rem auto 0 auto;
-    width: 50%;
-    flex-direction: row;
-    justify-content: space-around
-  }
-`;
+const SnsIcons = styled('div', {
+  display: 'flex',
+  margin: '1rem auto 0 auto',
+  width: '50%',
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  '@bp2': {
+    position: 'absolute',
+    right: '-2rem',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    gap: '1rem',
+    margin: 0,
+    width: 'inherit',
+  },
+});
 
-const ContentDiv = styled.div`
-  display: flex;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
+const Container = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  '@bp2': {
+    flexDirection: 'row',
+  },
+});

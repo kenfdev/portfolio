@@ -1,5 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { FC } from 'react';
+import { styled } from '../../../styles/stitches';
+import { Box } from '../../general/Box';
+import { H3 } from '../../general/Text';
 
 export type CourseData = {
   courseName: string;
@@ -13,63 +15,39 @@ type Props = {
   courses: CourseData[];
 };
 
-export const UdemyCourseList: FunctionComponent<Props> = ({ courses }) => (
+export const UdemyCourseList: FC<Props> = ({ courses }) => (
   <div>
     {courses.map((data, idx) => (
       <Wrapper key={idx}>
         <LinkItem href={data.couponUrl} target="_blank">
-          <ThumbnailWrapper>
+          <Box css={{ m: 'auto', maxWidth: '300px', flex: 1 }}>
             <img src={data.thumbnail} alt={data.thumbnailAlt} />
-          </ThumbnailWrapper>
-          <ContentWrapper>
-            <div className="course-title">{data.courseName}</div>
+          </Box>
+          <Box css={{ flex: 3, padding: '0 1rem' }}>
+            <H3>{data.courseName}</H3>
             <p>{data.description}</p>
-          </ContentWrapper>
+          </Box>
         </LinkItem>
       </Wrapper>
     ))}
   </div>
 );
 
-const Wrapper = styled.div`
-  padding: 2rem 0.5rem;
-  border-bottom: 1px solid #e5e5e5;
-  &:last-child {
-    border-bottom: none;
-  }
+const Wrapper = styled('div', {
+  padding: '2rem 0.5rem',
+  borderBottom: '1px solid #e5e5e5',
+  '&:last-child': {
+    borderBottom: 'none',
+  },
+  '&:hover': {
+    backgroundColor: '#e5e5e5',
+  },
+});
 
-  &:hover {
-    background-color: #e5e5e5;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
-
-const LinkItem = styled.a`
-  display: flex;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const ThumbnailWrapper = styled.div`
-  flex: 1;
-
-  @media (max-width: 768px) {
-    max-width: 300px;
-    margin: auto;
-  }
-`;
-
-const ContentWrapper = styled.div`
-  flex: 3;
-  padding: 0 1rem;
-
-  .course-title {
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-`;
+const LinkItem = styled('a', {
+  display: 'flex',
+  flexDirection: 'column',
+  '@bp2': {
+    flexDirection: 'row',
+  },
+});

@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent } from 'react';
 import { DefaultLayout } from '../DefaultLayout';
 import { UdemyCourseList, CourseData } from '../../organisms/UdemyCourseList';
-import styled from 'styled-components';
-import SectionTitle from '../../shared/SectionTitle';
+import SectionTitle from '../../general/SectionTitle/SectionTitle';
+import { styled } from '../../../styles/stitches';
 
 interface Props {
   location: Location;
@@ -26,8 +26,8 @@ export const Udemy: FunctionComponent<Props> = ({
   );
 };
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  padding: 1rem 1rem 0 1rem;
-  max-width: 50rem;
-`;
+const Wrapper = styled('div', {
+  margin: '0 auto',
+  padding: '1rem 1rem 0 1rem',
+  maxWidth: '50rem',
+});

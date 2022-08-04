@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FC } from 'react';
 import { PageProps } from 'gatsby';
 import { Home } from '../components/templates/Home';
 import { graphql } from 'gatsby';
@@ -10,11 +10,10 @@ interface OwnProps {
 
 type Props = OwnProps & PageProps;
 
-const IndexRoute: FunctionComponent<Props> = ({ location, data }) => {
+const IndexRoute: FC<Props> = ({ location, data }) => {
   const { allSkillsYaml, allBasicsYaml } = data;
   const [basics] = allBasicsYaml.nodes;
   const [skills] = allSkillsYaml.nodes;
-  console.log(skills);
   return (
     <Layout>
       <Home

@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
+import { Box } from '../../general/Box';
 import { Experience, ExperienceData } from './Experience';
-import styled from 'styled-components';
 
 type Props = {
   experiences: ExperienceData[];
@@ -9,13 +9,9 @@ type Props = {
 export const ExperiencesList: FunctionComponent<Props> = ({ experiences }) => (
   <div>
     {experiences.map((data, idx) => (
-      <Wrapper key={idx}>
+      <Box css={{ mb: '3rem' }} key={idx}>
         <Experience data={data} />
-      </Wrapper>
+      </Box>
     ))}
   </div>
 );
-
-const Wrapper = styled.div`
-  margin-bottom: 1rem;
-`;

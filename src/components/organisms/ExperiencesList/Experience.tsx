@@ -1,6 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { Tag } from '../../atoms/Tag';
-import styled from 'styled-components';
+import { FunctionComponent } from 'react';
+import { styled } from '../../../styles/stitches';
+import { Tag } from '../../dataDisplay/Tag';
+import { Box } from '../../general/Box';
+import { H3 } from '../../general/Text';
 
 export type ExperienceData = {
   projectName: string;
@@ -17,52 +19,30 @@ type Props = {
 };
 
 export const Experience: FunctionComponent<Props> = ({ data }) => (
-  <Wrapper>
-    <h3>{data.projectName}</h3>
-    <Header>
+  <Box css={{ mb: '2rem' }}>
+    <H3>{data.projectName}</H3>
+    <Box css={{ display: 'flex', justifyContent: 'space-between', mb: '1rem' }}>
       <div>
         <div>Role: {data.role}</div>
-        <div>Members: {data.membersCount}</div>
+        {data.membersCount && <div>Members: {data.membersCount}</div>}
       </div>
-      <div>
-        {data.from} - {data.to}
-      </div>
-    </Header>
-    <Description>{data.description}</Description>
-    <SkillsWrapper>Skills:</SkillsWrapper>
-    <TagsWrapper>
-      {data.skills.map((v, idx) => {
-        return (
-          <li key={idx}>
-            <Tag>{v}</Tag>
-          </li>
-        );
-      })}
-    </TagsWrapper>
-  </Wrapper>
+      <div>{`${data.from} - ${data.to}`}</div>
+    </Box>
+    <Box css={{ mb: '1rem' }}>{data.description}</Box>
+    <Box css={{ mb: '0.3rem' }}>Skills:</Box>
+    <TagsContainer>
+      {data.skills.map((v, idx) => (
+        <Box key={idx}>
+          <Tag>{v}</Tag>
+        </Box>
+      ))}
+    </TagsContainer>
+  </Box>
 );
-const Wrapper = styled.div`
-  margin-bottom: 2rem;
-`;
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-`;
-
-const Description = styled.p`
-  margin-bottom: 1rem;
-`;
-
-const SkillsWrapper = styled.div`
-  margin-bottom: 0.3rem;
-`;
-
-const TagsWrapper = styled.ul`
-  li {
-    display: inline-block;
-    margin-right: 0.5rem;
-    margin-bottom: 0.7rem;
-  }
-`;
+const TagsContainer = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  rowGap: '1rem',
+  columnGap: '8px',
+});

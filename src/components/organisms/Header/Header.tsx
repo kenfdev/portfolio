@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { FunctionComponent } from 'react';
 import { Link, navigate } from 'gatsby';
-import { Dropdown } from '../../molecules/Dropdown';
+import { styled } from '../../../styles/stitches';
+import { Dropdown } from '../../dataDisplay/Dropdown';
 
 type Props = {
   className?: string;
@@ -56,26 +56,26 @@ export const Header: FunctionComponent<Props> = ({ location, className }) => {
   );
 };
 
-const Wrapper = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+const Wrapper = styled('header', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+});
 
-const BrandingDiv = styled.div`
-  font-size: 1.3rem;
-`;
+const BrandingDiv = styled('div', {
+  fontSize: '1.3rem',
+});
 
-const Nav = styled.nav`
-  & > ul {
-    & > li {
-      display: inline-block;
-      list-style: none;
-      margin-left: 1rem;
-    }
-  }
-`;
+const Nav = styled('nav', {
+  '& > ul': {
+    '& > li': {
+      display: 'inline-block',
+      listStyle: 'none',
+      marginLeft: '1rem',
+    },
+  },
+});
 
-const StyledLink = styled(Link)`
-  color: inherit;
-`;
+const StyledLink = styled(Link, {
+  color: 'inherit',
+});

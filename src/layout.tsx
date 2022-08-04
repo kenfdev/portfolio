@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
+import { Box } from './components/general/Box';
 
-export default function Layout({ children }) {
+interface Props {
+  children: ReactNode;
+}
+
+const Layout: FC<Props> = ({ children }) => {
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
   const { description, siteUrl, title, twitterUsername, defaultImage } =
@@ -16,7 +21,7 @@ export default function Layout({ children }) {
   };
 
   return (
-    <div>
+    <Box css={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Helmet title={seo.title}>
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
@@ -42,9 +47,9 @@ export default function Layout({ children }) {
         />
       </Helmet>
       {children}
-    </div>
+    </Box>
   );
-}
+};
 
 const query = graphql`
   query SEO {
@@ -59,3 +64,5 @@ const query = graphql`
     }
   }
 `;
+
+export default Layout;
