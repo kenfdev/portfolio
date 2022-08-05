@@ -1,7 +1,7 @@
 import { createStitches } from '@stitches/react';
 import { Property } from '@stitches/react/types/css';
 
-export const { styled, css } = createStitches({
+export const { styled, css, getCssText } = createStitches({
   theme: {
     colors: {
       gray200: '#f2f2f2',
