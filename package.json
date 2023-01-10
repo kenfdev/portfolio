@@ -23,7 +23,7 @@
   "dependencies": {
     "@stitches/react": "^1.2.8",
     "babel-plugin-styled-components": "^2.0.7",
-    "gatsby": "^4.19.2",
+    "gatsby": "^5.0.0",
     "gatsby-plugin-google-gtag": "^4.19.0",
     "gatsby-plugin-i18n": "^1.0.1",
     "gatsby-plugin-image": "^2.19.0",
