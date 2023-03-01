@@ -8,18 +8,18 @@ courses:
     thumbnail: /wdb.png
     thumbnailAlt: The Web Developer Bootcamp
     thumbnailAlt_ja: Web Developer Bootcamp 2021（日本語版）
-    couponUrl: https://www.udemy.com/course/the-web-developer-bootcamp-2021-japan/?couponCode=D1531530F251E9989F56
+    couponUrl: https://www.udemy.com/course/the-web-developer-bootcamp-2021-japan/?couponCode=C7E1D117DA03168F27A6
   - courseName: 【世界で4万人が受講】JavaScriptエンジニアのためのES6完全ガイド
     description: The Japanese localized version of "ES6 Javascript The Complete Developer's Guide" by Stephen Grider
     description_ja: 述べ78万人の受講生を抱えるStephen Grider氏による大人気コースの完全日本語版。JSのメソッドのforEach、map、reduce、ES6で新しく登場した関数のデフォルト値やクラス、改善されたオブジェクトリテラルについて学ぶ。
     thumbnail: /es6.jpg
     thumbnailAlt: ES6 Javascript The Complete Developer's Guide
     thumbnailAlt_ja: JavaScriptエンジニアのためのES6完全ガイド
-    couponUrl: https://www.udemy.com/course/javascriptes6/?couponCode=683382162D9F1D34E72E
+    couponUrl: https://www.udemy.com/course/javascriptes6/?couponCode=001352A22F697F6784AE
   - courseName: 【世界で４万人が受講】 実践！AngularJS講座
     description: The Japanese localized version of "Learn and Understand AngularJS" by Anthony Alicea
     description_ja: 世界中で人気のAngularJS講座の日本語版。AngularJSの”なぜ”をしっかりと解説します。仕組みを理解して使える本物のエンジニアを一緒に目指しましょう！
     thumbnail: /angularjs.jpg
     thumbnailAlt: Learn and Understand AngularJS
     thumbnailAlt_ja: 実践！AngularJS講座
-    couponUrl: https://www.udemy.com/course/angularjs_ja/?couponCode=2C2A90BC0F65674D52DD
+    couponUrl: https://www.udemy.com/course/angularjs_ja/?couponCode=71D96796318C2C0DF147
