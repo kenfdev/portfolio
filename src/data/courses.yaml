@@ -2,24 +2,31 @@
 description: I deliver online courses on Udemy as an instructor. 
 description_ja: Udemyでオンラインコースを配信しています。以下のリンクからは必ずクーポンが適用されるのでぜひご活用ください。
 courses:
+  - courseName: "【日本語字幕版】Mastering OpenAI APIs: Unleash the Power of GPT4"
+    description: "The Japanese subbed version of 'Mastering OpenAI APIs: Unleash the Power of GPT4' by Colt Steele"
+    description_ja: GPT-4での収録！ChatGPT API、Whisper、エンべディング、DALL-E、そして数々のプロジェクトでOpenAIをマスターしましょう！
+    thumbnail: /openai.jpg
+    thumbnailAlt: "Mastering OpenAI APIs: Unleash the Power of GPT4"
+    thumbnailAlt_ja: "Mastering OpenAI APIs: Unleash the Power of GPT4"
+    couponUrl: https://www.udemy.com/course/mastering-openai-apis-unleash-the-power-of-gpt4-jpsub/?couponCode=8E412F496218CD2B9EE1
   - courseName: 【世界で70万人が受講】Web Developer Bootcamp 2021（日本語版）
     description: The Japanese localized version of "The Web Developer Bootcamp" by Colt Steele
     description_ja: 【2021最新版】世界で70万人以上が受講したThe Web Developer Bootcamp完全日本語版！これ一本でフロントエンドからバックエンド、セキュリティからアプリのデプロイを包括的に学ぶ。
     thumbnail: /wdb.png
     thumbnailAlt: The Web Developer Bootcamp
     thumbnailAlt_ja: Web Developer Bootcamp 2021（日本語版）
-    couponUrl: https://www.udemy.com/course/the-web-developer-bootcamp-2021-japan/?couponCode=ACC507BCE5878B286365
+    couponUrl: https://www.udemy.com/course/the-web-developer-bootcamp-2021-japan/?couponCode=469C89F704C7EA590EFF
   - courseName: 【世界で4万人が受講】JavaScriptエンジニアのためのES6完全ガイド
     description: The Japanese localized version of "ES6 Javascript The Complete Developer's Guide" by Stephen Grider
     description_ja: 述べ78万人の受講生を抱えるStephen Grider氏による大人気コースの完全日本語版。JSのメソッドのforEach、map、reduce、ES6で新しく登場した関数のデフォルト値やクラス、改善されたオブジェクトリテラルについて学ぶ。
     thumbnail: /es6.jpg
     thumbnailAlt: ES6 Javascript The Complete Developer's Guide
     thumbnailAlt_ja: JavaScriptエンジニアのためのES6完全ガイド
-    couponUrl: https://www.udemy.com/course/javascriptes6/?couponCode=48F0BDF000A2F61E97A1
+    couponUrl: https://www.udemy.com/course/javascriptes6/?couponCode=9D2B400305E2789B5C97
   - courseName: 【世界で４万人が受講】 実践！AngularJS講座
     description: The Japanese localized version of "Learn and Understand AngularJS" by Anthony Alicea
     description_ja: 世界中で人気のAngularJS講座の日本語版。AngularJSの”なぜ”をしっかりと解説します。仕組みを理解して使える本物のエンジニアを一緒に目指しましょう！
     thumbnail: /angularjs.jpg
     thumbnailAlt: Learn and Understand AngularJS
     thumbnailAlt_ja: 実践！AngularJS講座
-    couponUrl: https://www.udemy.com/course/angularjs_ja/?couponCode=081253469561A2E07118
+    couponUrl: https://www.udemy.com/course/angularjs_ja/?couponCode=BFF1E4735EF78D54CBF8
