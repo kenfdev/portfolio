@@ -8,25 +8,25 @@ courses:
     thumbnail: /openai.jpg
     thumbnailAlt: "Mastering OpenAI APIs: Unleash the Power of GPT4"
     thumbnailAlt_ja: "Mastering OpenAI APIs: Unleash the Power of GPT4"
-    couponUrl: https://www.udemy.com/course/mastering-openai-apis-unleash-the-power-of-gpt4-jpsub/?couponCode=79F4E80572128D7CA5C4
+    couponUrl: https://www.udemy.com/course/mastering-openai-apis-unleash-the-power-of-gpt4-jpsub/?couponCode=37D8D62B0E8F7BB832BC
   - courseName: 【世界で70万人が受講】Web Developer Bootcamp 2023（日本語版）
     description: The Japanese localized version of "The Web Developer Bootcamp" by Colt Steele
     description_ja: 【2021最新版】世界で70万人以上が受講したThe Web Developer Bootcamp完全日本語版！これ一本でフロントエンドからバックエンド、セキュリティからアプリのデプロイを包括的に学ぶ。
     thumbnail: /wdb.png
     thumbnailAlt: The Web Developer Bootcamp
     thumbnailAlt_ja: Web Developer Bootcamp 2023（日本語版）
-    couponUrl: https://www.udemy.com/course/the-web-developer-bootcamp-2021-japan/?couponCode=FCF3CC0958D068DBACC4
+    couponUrl: https://www.udemy.com/course/the-web-developer-bootcamp-2021-japan/?couponCode=81B2833FE4915D2EFF02
   - courseName: 【世界で4万人が受講】JavaScriptエンジニアのためのES6完全ガイド
     description: The Japanese localized version of "ES6 Javascript The Complete Developer's Guide" by Stephen Grider
     description_ja: 述べ78万人の受講生を抱えるStephen Grider氏による大人気コースの完全日本語版。JSのメソッドのforEach、map、reduce、ES6で新しく登場した関数のデフォルト値やクラス、改善されたオブジェクトリテラルについて学ぶ。
     thumbnail: /es6.jpg
     thumbnailAlt: ES6 Javascript The Complete Developer's Guide
     thumbnailAlt_ja: JavaScriptエンジニアのためのES6完全ガイド
-    couponUrl: https://www.udemy.com/course/javascriptes6/?couponCode=43579C377A73A12782B7
+    couponUrl: https://www.udemy.com/course/javascriptes6/?couponCode=14695F3CABFC34744D11
   - courseName: 【世界で４万人が受講】 実践！AngularJS講座
     description: The Japanese localized version of "Learn and Understand AngularJS" by Anthony Alicea
     description_ja: 世界中で人気のAngularJS講座の日本語版。AngularJSの”なぜ”をしっかりと解説します。仕組みを理解して使える本物のエンジニアを一緒に目指しましょう！
     thumbnail: /angularjs.jpg
     thumbnailAlt: Learn and Understand AngularJS
     thumbnailAlt_ja: 実践！AngularJS講座
-    couponUrl: https://www.udemy.com/course/angularjs_ja/?couponCode=A7FF5EC38AAEADFF39A7
+    couponUrl: https://www.udemy.com/course/angularjs_ja/?couponCode=D55C083746F92DCD3F38
