@@ -33,7 +33,7 @@
     "gatsby-plugin-sitemap": "^5.19.0",
     "gatsby-source-filesystem": "^4.19.0",
     "gatsby-transformer-sharp": "^4.19.0",
-    "gatsby-transformer-yaml-full": "^4.0.5",
+    "gatsby-transformer-yaml-full": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
