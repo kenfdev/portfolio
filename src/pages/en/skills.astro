@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import TerminalLayout from '../../layouts/TerminalLayout.astro';
+import SkillBar from '../../components/SkillBar.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = getTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const skillEntries = await getCollection('skills', ({ id }) => id.startsWith('en-'));
+const groupedSkills = skillEntries.reduce((acc, entry) => {
+  acc[entry.data.category] = entry.data.items;
+  return acc;
+}, {} as Record<string, Array<{ name: string; years: number }>>);
+---
+
+<TerminalLayout
+  title={t.pages.skills.title}
+  description={t.meta.description}
+  lang={lang}
+  currentPath={currentPath}
+>
+  <section class="skills-content">
+    <div class="prompt">{t.pages.skills.prompt}</div>
+    <div class="skills-json">
+      <pre class="json-bracket">{'{'}</pre>
+      {Object.entries(groupedSkills).map(([category, items], index, arr) => (
+        <div class="skill-category">
+          <div class="category-name">  "{category.toLowerCase()}": [</div>
+          <div class="skills-list">
+            {items.map((skill) => (
+              <div class="skill-entry">
+                <span class="skill-prefix">    {'{'}</span>
+                <SkillBar name={skill.name} years={skill.years} />
+                <span class="skill-suffix">{'}'},</span>
+              </div>
+            ))}
+          </div>
+          <div class="category-close">  ]{index < arr.length - 1 ? ',' : ''}</div>
+        </div>
+      ))}
+      <pre class="json-bracket">{'}'}</pre>
+    </div>
+    <div class="cursor">$ <span class="blink">_</span></div>
+  </section>
+</TerminalLayout>
+
+<style>
+  .skills-content {
+    max-width: 700px;
+  }
+
+  .prompt {
+    color: var(--accent-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-json {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+  }
+
+  .json-bracket {
+    color: var(--text-heading);
+    margin: 0;
+    background: none;
+    padding: 0;
+  }
+
+  .skill-category {
+    margin: 0.5rem 0;
+  }
+
+  .category-name {
+    color: var(--accent-primary);
+  }
+
+  .category-close {
+    color: var(--text-primary);
+  }
+
+  .skill-entry {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  .skill-prefix,
+  .skill-suffix {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .cursor {
+    color: var(--text-primary);
+  }
+
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>

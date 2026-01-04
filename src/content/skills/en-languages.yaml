@@ -1,0 +1,11 @@
+category: Languages
+lang: en
+items:
+  - name: TypeScript
+    years: 6
+  - name: Go
+    years: 5
+  - name: Python
+    years: 4
+  - name: Rust
+    years: 2

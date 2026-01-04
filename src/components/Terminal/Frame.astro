@@ -1,0 +1,69 @@
+---
+import Titlebar from './Titlebar.astro';
+import Sidebar from './Sidebar.astro';
+import StatusLine from './StatusLine.astro';
+import MobileMenu from './MobileMenu.astro';
+
+interface Props {
+  lang: 'en' | 'ja';
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+---
+
+<div class="terminal-frame">
+  <Titlebar lang={lang} currentPath={currentPath} />
+  <div class="terminal-body">
+    <Sidebar lang={lang} currentPath={currentPath} />
+    <main class="content-area" role="main">
+      <slot />
+    </main>
+  </div>
+  <StatusLine />
+  <MobileMenu lang={lang} currentPath={currentPath} />
+</div>
+
+<style>
+  .terminal-frame {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 1px solid var(--bg-hover);
+    background-color: var(--bg-primary);
+  }
+
+  .terminal-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .content-area {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 768px) {
+    .terminal-frame {
+      border: none;
+    }
+
+    .content-area {
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  @media (min-width: 1401px) {
+    .terminal-frame {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: calc(100vh - 2rem);
+    }
+  }
+</style>

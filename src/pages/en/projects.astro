@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import TerminalLayout from '../../layouts/TerminalLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = getTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const projectEntries = await getCollection('projects', ({ id }) => id.startsWith('en/'));
+const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order);
+---
+
+<TerminalLayout
+  title={t.pages.projects.title}
+  description={t.meta.description}
+  lang={lang}
+  currentPath={currentPath}
+>
+  <section class="projects-content">
+    <div class="prompt">{t.pages.projects.prompt}</div>
+    <div class="projects-list">
+      {sortedProjects.map(async (project) => {
+        const { Content } = await project.render();
+        return (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            techStack={project.data.techStack}
+            role={project.data.role}
+            githubUrl={project.data.githubUrl}
+            liveUrl={project.data.liveUrl}
+          >
+            <Content />
+          </ProjectCard>
+        );
+      })}
+    </div>
+    <div class="cursor">$ <span class="blink">_</span></div>
+  </section>
+</TerminalLayout>
+
+<style>
+  .projects-content {
+    max-width: 800px;
+  }
+
+  .prompt {
+    color: var(--accent-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .projects-list {
+    margin-bottom: 2rem;
+  }
+
+  .cursor {
+    color: var(--text-primary);
+  }
+
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+
+---
+
+<div id="boot-sequence" class="boot-sequence" aria-hidden="true">
+  <div class="boot-content">
+    <div class="boot-line" data-delay="0">[    0.000] Initializing portfolio...</div>
+    <div class="boot-line" data-delay="400">[    0.124] Loading content collections... <span class="ok">OK</span></div>
+    <div class="boot-line" data-delay="800">[    0.256] Mounting components... <span class="ok">OK</span></div>
+    <div class="boot-line" data-delay="1200">[    0.512] Starting development server...</div>
+    <div class="boot-line" data-delay="1600"></div>
+    <div class="boot-line" data-delay="2000"><span class="ready">kenev.net ready.</span></div>
+    <div class="boot-line" data-delay="2400"></div>
+    <div class="boot-line" data-delay="2400">$ <span class="cursor">_</span></div>
+  </div>
+</div>
+
+<style>
+  .boot-sequence {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-primary);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .boot-sequence.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .boot-sequence.removed {
+    display: none;
+  }
+
+  .boot-content {
+    padding: 2rem;
+    max-width: 600px;
+  }
+
+  .boot-line {
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+  }
+
+  .boot-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ok {
+    color: var(--color-success);
+  }
+
+  .ready {
+    color: var(--accent-primary);
+    font-weight: 500;
+  }
+
+  .cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .boot-sequence {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const bootSequence = document.getElementById('boot-sequence');
+
+  if (bootSequence) {
+    const hasVisited = localStorage.getItem('portfolio-visited');
+
+    if (hasVisited) {
+      bootSequence.classList.add('removed');
+    } else {
+      const lines = bootSequence.querySelectorAll('.boot-line');
+
+      lines.forEach((line) => {
+        const delay = parseInt(line.getAttribute('data-delay') || '0', 10);
+        setTimeout(() => {
+          line.classList.add('visible');
+        }, delay);
+      });
+
+      setTimeout(() => {
+        bootSequence.classList.add('hidden');
+        localStorage.setItem('portfolio-visited', 'true');
+
+        setTimeout(() => {
+          bootSequence.classList.add('removed');
+        }, 300);
+      }, 3000);
+    }
+  }
+</script>

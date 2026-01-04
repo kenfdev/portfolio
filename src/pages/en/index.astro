@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import TerminalLayout from '../../layouts/TerminalLayout.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = getTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const aboutEntries = await getCollection('about');
+const aboutEntry = aboutEntries.find((entry) => entry.data.lang === 'en');
+
+if (!aboutEntry) {
+  throw new Error('About content not found');
+}
+
+const { Content } = await aboutEntry.render();
+---
+
+<TerminalLayout
+  title={t.pages.about.title}
+  description={t.meta.description}
+  lang={lang}
+  currentPath={currentPath}
+>
+  <article class="about-content">
+    <div class="prompt">{t.pages.about.prompt}</div>
+    <h1 class="title"># {aboutEntry.data.title}</h1>
+    <div class="content">
+      <Content />
+    </div>
+    <div class="cursor">$ <span class="blink">_</span></div>
+  </article>
+</TerminalLayout>
+
+<style>
+  .about-content {
+    max-width: 700px;
+  }
+
+  .prompt {
+    color: var(--accent-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    color: var(--text-heading);
+    margin-bottom: 1.5rem;
+  }
+
+  .content {
+    line-height: 1.8;
+  }
+
+  .content :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  .cursor {
+    margin-top: 2rem;
+    color: var(--text-primary);
+  }
+
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>

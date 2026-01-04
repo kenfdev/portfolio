@@ -1,0 +1,63 @@
+---
+interface Props {
+  name: string;
+  years: number;
+}
+
+const { name, years } = Astro.props;
+
+// Generate ASCII progress bar (20 blocks total = 10 years max)
+const maxYears = 10;
+const totalBlocks = 20;
+const filledBlocks = Math.min(Math.round((years / maxYears) * totalBlocks), totalBlocks);
+const emptyBlocks = totalBlocks - filledBlocks;
+const progressBar = '█'.repeat(filledBlocks) + '░'.repeat(emptyBlocks);
+---
+
+<div class="skill-item">
+  <span class="skill-name">{name}</span>
+  <span class="skill-bar" aria-label={`${years} years of experience`}>{progressBar}</span>
+  <span class="skill-years">{years}y</span>
+</div>
+
+<style>
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.375rem 0;
+    font-size: 0.875rem;
+  }
+
+  .skill-name {
+    min-width: 120px;
+    color: var(--text-heading);
+  }
+
+  .skill-bar {
+    color: var(--accent-primary);
+    letter-spacing: 0;
+    font-size: 0.75rem;
+  }
+
+  .skill-years {
+    color: var(--text-muted);
+    min-width: 2.5rem;
+    text-align: right;
+  }
+
+  @media (max-width: 480px) {
+    .skill-item {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-name {
+      min-width: 100%;
+    }
+
+    .skill-bar {
+      font-size: 0.625rem;
+    }
+  }
+</style>

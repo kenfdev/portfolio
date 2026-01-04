@@ -1,0 +1,11 @@
+category: Frameworks
+lang: en
+items:
+  - name: React
+    years: 5
+  - name: Next.js
+    years: 3
+  - name: Node.js
+    years: 6
+  - name: Astro
+    years: 1

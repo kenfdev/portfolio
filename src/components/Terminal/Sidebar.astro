@@ -1,0 +1,107 @@
+---
+interface Props {
+  lang: 'en' | 'ja';
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+const navItems = [
+  { path: `/${lang}`, label: 'README.md', icon: '├──' },
+  { path: `/${lang}/projects`, label: 'src/projects/', icon: '├──' },
+  { path: `/${lang}/skills`, label: 'skills.json', icon: '├──' },
+  { path: `/${lang}/contact`, label: 'contact.sh', icon: '└──' },
+];
+
+function isActive(itemPath: string): boolean {
+  if (itemPath === `/${lang}`) {
+    return currentPath === `/${lang}` || currentPath === `/${lang}/`;
+  }
+  return currentPath.startsWith(itemPath);
+}
+---
+
+<nav class="sidebar" aria-label="Main navigation">
+  <div class="folder-header">~/portfolio</div>
+  <ul class="file-tree">
+    {navItems.map((item) => (
+      <li>
+        <a
+          href={item.path}
+          class:list={['nav-item', { active: isActive(item.path) }]}
+          aria-current={isActive(item.path) ? 'page' : undefined}
+        >
+          <span class="tree-icon">{item.icon}</span>
+          <span class="file-name">{item.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+    padding: 1rem;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--bg-hover);
+    overflow-y: auto;
+  }
+
+  .folder-header {
+    color: var(--accent-primary);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    padding-left: 0.25rem;
+  }
+
+  .file-tree {
+    list-style: none;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.5rem;
+    color: var(--text-primary);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-item:hover {
+    background-color: var(--bg-hover);
+    text-decoration: none;
+  }
+
+  .nav-item.active {
+    background-color: var(--bg-hover);
+    color: var(--accent-primary);
+  }
+
+  .tree-icon {
+    color: var(--text-muted);
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .file-name {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+
+    .sidebar.open {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 100;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+</style>

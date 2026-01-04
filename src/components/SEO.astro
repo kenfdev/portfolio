@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang: 'en' | 'ja';
+  currentPath: string;
+  image?: string;
+}
+
+const { title, description, lang, currentPath, image = '/og-image.png' } = Astro.props;
+
+const siteUrl = 'https://kenev.net';
+const canonicalUrl = `${siteUrl}${currentPath}`;
+const subpath = currentPath.replace(/^\/(en|ja)/, '');
+const ogLocale = lang === 'en' ? 'en_US' : 'ja_JP';
+const altLocale = lang === 'en' ? 'ja_JP' : 'en_US';
+const fullTitle = `${title} | Ken Fukuyama`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ken Fukuyama',
+  url: siteUrl,
+  sameAs: [
+    'https://github.com/kenfdev',
+    'https://linkedin.com/in/kenfukuyama',
+    'https://twitter.com/kenfdev',
+  ],
+  jobTitle: 'Software Engineer',
+  knowsAbout: ['TypeScript', 'Go', 'Kubernetes', 'React', 'AWS'],
+};
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Alternate languages -->
+<link rel="alternate" hreflang="en" href={`${siteUrl}/en${subpath}`} />
+<link rel="alternate" hreflang="ja" href={`${siteUrl}/ja${subpath}`} />
+<link rel="alternate" hreflang="x-default" href={`${siteUrl}/en${subpath}`} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={`${siteUrl}${image}`} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={altLocale} />
+<meta property="og:site_name" content="Ken Fukuyama" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={`${siteUrl}${image}`} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

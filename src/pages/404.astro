@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+
+const lang = 'en';
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | Ken Fukuyama</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div class="error-container">
+      <div class="terminal-frame">
+        <div class="titlebar">
+          <span class="light red"></span>
+          <span class="light yellow"></span>
+          <span class="light green"></span>
+        </div>
+        <div class="error-content">
+          <div class="prompt">$ cat /nonexistent-page</div>
+          <div class="error-message">
+            <p class="error-title">Error: ENOENT: no such file or directory</p>
+            <p class="stack-trace">
+              <span class="indent">at readFile (portfolio/routes.ts:42:15)</span>
+              <span class="indent">at processRequest (portfolio/server.ts:128:7)</span>
+            </p>
+            <p class="error-description">The requested page could not be found.</p>
+          </div>
+          <a href="/en" class="home-link">$ cd ~  [← Return Home]</a>
+          <div class="cursor">$ <span class="blink">_</span></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .error-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .terminal-frame {
+    max-width: 600px;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .titlebar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-hover);
+  }
+
+  .light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .light.red { background-color: var(--color-error); }
+  .light.yellow { background-color: var(--color-highlight); }
+  .light.green { background-color: var(--color-success); }
+
+  .error-content {
+    padding: 2rem;
+  }
+
+  .prompt {
+    color: var(--accent-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .error-message {
+    margin-bottom: 2rem;
+  }
+
+  .error-title {
+    color: var(--color-error);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .stack-trace {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .indent {
+    display: block;
+    padding-left: 1.5rem;
+  }
+
+  .error-description {
+    color: var(--text-primary);
+  }
+
+  .home-link {
+    display: inline-block;
+    color: var(--accent-link);
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .home-link:hover {
+    color: var(--accent-primary);
+  }
+
+  .cursor {
+    color: var(--text-primary);
+  }
+
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>

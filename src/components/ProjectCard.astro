@@ -1,0 +1,195 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  techStack: string[];
+  role?: string;
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
+const { title, description, techStack, role, githubUrl, liveUrl } = Astro.props;
+const id = title.toLowerCase().replace(/\s+/g, '-');
+---
+
+<article class="project-card" data-project-id={id}>
+  <button
+    class="project-header"
+    aria-expanded="false"
+    aria-controls={`project-details-${id}`}
+  >
+    <div class="project-summary">
+      <span class="dir-icon">drwxr-xr-x</span>
+      <span class="project-name">{title}/</span>
+      <span class="project-desc">{description}</span>
+    </div>
+    <div class="tech-tags">
+      {techStack.map((tech) => (
+        <span class="tech-tag">[{tech}]</span>
+      ))}
+    </div>
+    <span class="expand-icon" aria-hidden="true">+</span>
+  </button>
+
+  <div
+    id={`project-details-${id}`}
+    class="project-details"
+    hidden
+  >
+    <div class="details-content">
+      <div class="details-body">
+        <slot />
+      </div>
+      {role && (
+        <div class="details-meta">
+          <strong>Role:</strong> {role}
+        </div>
+      )}
+      {(githubUrl || liveUrl) && (
+        <div class="details-links">
+          <strong>Links:</strong>
+          {githubUrl && <a href={githubUrl} target="_blank" rel="noopener noreferrer">[GitHub]</a>}
+          {liveUrl && <a href={liveUrl} target="_blank" rel="noopener noreferrer">[Live Demo]</a>}
+        </div>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    border: 1px solid var(--bg-hover);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .project-header {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--bg-secondary);
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: background-color 0.2s ease;
+    position: relative;
+  }
+
+  .project-header:hover {
+    background-color: var(--bg-hover);
+  }
+
+  .project-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .dir-icon {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  .project-name {
+    color: var(--accent-primary);
+    font-weight: 500;
+  }
+
+  .project-desc {
+    color: var(--text-primary);
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-left: 7rem;
+  }
+
+  .tech-tag {
+    color: var(--accent-secondary);
+    font-size: 0.75rem;
+  }
+
+  .expand-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .project-header[aria-expanded="true"] .expand-icon {
+    transform: rotate(45deg);
+  }
+
+  .project-details {
+    border-top: 1px solid var(--bg-hover);
+    background-color: var(--bg-primary);
+  }
+
+  .project-details[hidden] {
+    display: none;
+  }
+
+  .details-content {
+    padding: 1.5rem;
+    border-left: 3px solid var(--accent-primary);
+    margin: 1rem;
+    background-color: var(--bg-secondary);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .details-body {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  .details-body :global(p) {
+    margin-bottom: 0.75rem;
+  }
+
+  .details-meta,
+  .details-links {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .details-links a {
+    margin-left: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .tech-tags {
+      padding-left: 0;
+    }
+
+    .dir-icon {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.project-header').forEach((button) => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      const controlsId = button.getAttribute('aria-controls');
+      const details = document.getElementById(controlsId || '');
+
+      button.setAttribute('aria-expanded', String(!expanded));
+
+      if (details) {
+        details.hidden = expanded;
+      }
+    });
+  });
+</script>

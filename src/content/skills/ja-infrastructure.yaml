@@ -1,0 +1,11 @@
+category: インフラ
+lang: ja
+items:
+  - name: Kubernetes
+    years: 4
+  - name: AWS
+    years: 6
+  - name: Docker
+    years: 5
+  - name: Terraform
+    years: 3

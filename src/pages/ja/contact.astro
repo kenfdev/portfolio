@@ -1,0 +1,139 @@
+---
+import TerminalLayout from '../../layouts/TerminalLayout.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const lang = 'ja';
+const t = getTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const socialLinks = [
+  { name: 'GitHub', handle: 'kenfdev', url: 'https://github.com/kenfdev' },
+  { name: 'LinkedIn', handle: 'Ken Fukuyama', url: 'https://linkedin.com/in/kenfukuyama' },
+  { name: 'Twitter', handle: '@kenfdev', url: 'https://twitter.com/kenfdev' },
+];
+---
+
+<TerminalLayout
+  title={t.pages.contact.title}
+  description={t.meta.description}
+  lang={lang}
+  currentPath={currentPath}
+>
+  <section class="contact-content">
+    <div class="prompt">{t.pages.contact.prompt}</div>
+    <div class="script-content">
+      <div class="script-header">{t.pages.contact.header}</div>
+      <div class="script-comment">{t.pages.contact.comment}</div>
+      <div class="script-vars">
+        {socialLinks.map((link) => (
+          <div class="var-line">
+            <span class="var-name">{link.name.toUpperCase()}</span>="{link.url}"
+          </div>
+        ))}
+      </div>
+      <div class="script-echo">{t.pages.contact.message}</div>
+      <div class="social-links">
+        {socialLinks.map((link) => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link">
+            <span class="arrow">→</span>
+            <span class="platform">[{link.name}]</span>
+            <span class="handle"># {link.handle}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="cursor">$ <span class="blink">_</span></div>
+  </section>
+</TerminalLayout>
+
+<style>
+  .contact-content {
+    max-width: 600px;
+  }
+
+  .prompt {
+    color: var(--accent-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .script-content {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+  }
+
+  .script-header {
+    color: var(--color-special);
+    margin-bottom: 0.5rem;
+  }
+
+  .script-comment {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .script-vars {
+    margin-bottom: 1rem;
+  }
+
+  .var-line {
+    color: var(--text-primary);
+    margin: 0.25rem 0;
+  }
+
+  .var-name {
+    color: var(--color-highlight);
+  }
+
+  .script-echo {
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .social-link:hover {
+    background-color: var(--bg-hover);
+    text-decoration: none;
+  }
+
+  .arrow {
+    color: var(--color-success);
+  }
+
+  .platform {
+    color: var(--accent-primary);
+    min-width: 100px;
+  }
+
+  .handle {
+    color: var(--text-muted);
+  }
+
+  .cursor {
+    color: var(--text-primary);
+  }
+
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>
