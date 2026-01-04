@@ -17,9 +17,10 @@ const projects = defineCollection({
     lang: z.enum(['en', 'ja']),
     techStack: z.array(z.string()),
     role: z.string().optional(),
+    period: z.string().optional(),
     githubUrl: z.string().url().optional(),
     liveUrl: z.string().url().optional(),
-    order: z.number(),
+    order: z.number().optional(),
   }),
 });
 
@@ -27,11 +28,10 @@ const skills = defineCollection({
   type: 'data',
   schema: z.object({
     category: z.string(),
-    lang: z.enum(['en', 'ja']),
     items: z.array(
       z.object({
         name: z.string(),
-        years: z.number(),
+        years: z.number().nullable().optional(),
       })
     ),
   }),

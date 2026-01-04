@@ -8,8 +8,30 @@ const lang = 'ja';
 const t = getTranslations(lang);
 const currentPath = Astro.url.pathname;
 
+// Parse period string to get start date for sorting (Japanese format: "2022年9月")
+function getStartDate(period: string): Date {
+  if (!period) return new Date(0);
+
+  // Extract the start part (before the dash)
+  const startPart = period.split('-')[0].trim();
+
+  // Parse Japanese format: "2022年9月"
+  const jaMatch = startPart.match(/(\d{4})年(\d{1,2})月/);
+  if (jaMatch) {
+    const year = parseInt(jaMatch[1]);
+    const month = parseInt(jaMatch[2]) - 1; // JS months are 0-indexed
+    return new Date(year, month);
+  }
+
+  return new Date(0);
+}
+
 const projectEntries = await getCollection('projects', ({ id }) => id.startsWith('ja/'));
-const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order);
+const sortedProjects = projectEntries.sort((a, b) => {
+  const dateA = getStartDate(a.data.period || '');
+  const dateB = getStartDate(b.data.period || '');
+  return dateB.getTime() - dateA.getTime(); // Newest first
+});
 ---
 
 <TerminalLayout
@@ -20,7 +42,7 @@ const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order
 >
   <section class="projects-content">
     <div class="prompt">{t.pages.projects.prompt}</div>
-    <div class="projects-list">
+    <div class="timeline">
       {sortedProjects.map(async (project) => {
         const { Content } = await project.render();
         return (
@@ -29,6 +51,7 @@ const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order
             description={project.data.description}
             techStack={project.data.techStack}
             role={project.data.role}
+            period={project.data.period}
             githubUrl={project.data.githubUrl}
             liveUrl={project.data.liveUrl}
           >
@@ -51,7 +74,7 @@ const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order
     margin-bottom: 1.5rem;
   }
 
-  .projects-list {
+  .timeline {
     margin-bottom: 2rem;
   }
 

@@ -8,8 +8,9 @@ const currentPath = Astro.url.pathname;
 
 const socialLinks = [
   { name: 'GitHub', handle: 'kenfdev', url: 'https://github.com/kenfdev' },
-  { name: 'LinkedIn', handle: 'Ken Fukuyama', url: 'https://linkedin.com/in/kenfukuyama' },
-  { name: 'Twitter', handle: '@kenfdev', url: 'https://twitter.com/kenfdev' },
+  { name: 'LinkedIn', handle: 'Ken Fukuyama', url: 'https://linkedin.com/in/kenfdev' },
+  { name: 'X', handle: '@kenfdev', url: 'https://x.com/kenfdev' },
+  { name: 'Facebook', handle: 'kenfukuyama85', url: 'https://facebook.com/kenfukuyama85' },
 ];
 ---
 
@@ -80,6 +81,7 @@ const socialLinks = [
   .var-line {
     color: var(--text-primary);
     margin: 0.25rem 0;
+    word-break: break-all;
   }
 
   .var-name {

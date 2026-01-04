@@ -1,0 +1,22 @@
+category: language
+items:
+  - name: JavaScript
+    years: 10
+  - name: TypeScript
+    years: 10
+  - name: SQL
+    years: 10
+  - name: HTML
+    years: 10
+  - name: CSS
+    years: 10
+  - name: C#
+    years: 3
+  - name: Go
+    years: 1
+  - name: PHP
+    years: 1
+  - name: Scala
+    years: 1
+  - name: Shell
+    years: null

@@ -8,8 +8,38 @@ const lang = 'en';
 const t = getTranslations(lang);
 const currentPath = Astro.url.pathname;
 
+// Parse period string to get start date for sorting
+function getStartDate(period: string): Date {
+  if (!period) return new Date(0);
+
+  // Handle "Present" or current
+  const isPresent = period.toLowerCase().includes('present');
+
+  // Extract the start part (before the dash)
+  const startPart = period.split('-')[0].trim();
+
+  // Parse month and year (e.g., "Sep 2022" or "Jan 2018")
+  const months: Record<string, number> = {
+    jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+    jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+  };
+
+  const match = startPart.match(/([a-zA-Z]+)\s+(\d{4})/);
+  if (match) {
+    const month = months[match[1].toLowerCase()] || 0;
+    const year = parseInt(match[2]);
+    return new Date(year, month);
+  }
+
+  return new Date(0);
+}
+
 const projectEntries = await getCollection('projects', ({ id }) => id.startsWith('en/'));
-const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order);
+const sortedProjects = projectEntries.sort((a, b) => {
+  const dateA = getStartDate(a.data.period || '');
+  const dateB = getStartDate(b.data.period || '');
+  return dateB.getTime() - dateA.getTime(); // Newest first
+});
 ---
 
 <TerminalLayout
@@ -20,7 +50,7 @@ const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order
 >
   <section class="projects-content">
     <div class="prompt">{t.pages.projects.prompt}</div>
-    <div class="projects-list">
+    <div class="timeline">
       {sortedProjects.map(async (project) => {
         const { Content } = await project.render();
         return (
@@ -29,6 +59,7 @@ const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order
             description={project.data.description}
             techStack={project.data.techStack}
             role={project.data.role}
+            period={project.data.period}
             githubUrl={project.data.githubUrl}
             liveUrl={project.data.liveUrl}
           >
@@ -51,7 +82,7 @@ const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order
     margin-bottom: 1.5rem;
   }
 
-  .projects-list {
+  .timeline {
     margin-bottom: 2rem;
   }
 

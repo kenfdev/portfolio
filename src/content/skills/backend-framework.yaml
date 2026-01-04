@@ -1,0 +1,12 @@
+category: backendFramework
+items:
+  - name: Node.js
+    years: 10
+  - name: .NET Framework
+    years: 3
+  - name: GraphQL
+    years: 3
+  - name: Laravel
+    years: 1
+  - name: Spark
+    years: 1

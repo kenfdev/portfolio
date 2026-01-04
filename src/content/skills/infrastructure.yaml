@@ -1,0 +1,20 @@
+category: infrastructure
+items:
+  - name: Terraform
+    years: 7
+  - name: Docker
+    years: 7
+  - name: AWS
+    years: 7
+  - name: Kubernetes
+    years: 3
+  - name: Datadog
+    years: 3
+  - name: Serverless
+    years: 3
+  - name: Jenkins
+    years: 1
+  - name: Hadoop
+    years: 1
+  - name: GCP
+    years: 1

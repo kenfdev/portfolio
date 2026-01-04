@@ -1,0 +1,18 @@
+category: frontendFramework
+items:
+  - name: React
+    years: 7
+  - name: Vue.js
+    years: 3
+  - name: D3.js
+    years: 1
+  - name: AngularJS
+    years: 1
+  - name: Angular
+    years: 1
+  - name: Next.js
+    years: 3
+  - name: React Native
+    years: 0
+  - name: Ionic
+    years: 2

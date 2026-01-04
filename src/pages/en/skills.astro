@@ -8,11 +8,24 @@ const lang = 'en';
 const t = getTranslations(lang);
 const currentPath = Astro.url.pathname;
 
-const skillEntries = await getCollection('skills', ({ id }) => id.startsWith('en-'));
+const skillEntries = await getCollection('skills');
 const groupedSkills = skillEntries.reduce((acc, entry) => {
   acc[entry.data.category] = entry.data.items;
   return acc;
-}, {} as Record<string, Array<{ name: string; years: number }>>);
+}, {} as Record<string, Array<{ name: string; years: number | null | undefined }>>);
+
+const categoryOrder = ['language', 'frontendFramework', 'backendFramework', 'database', 'test', 'infrastructure', 'saas'];
+const sortedCategories = categoryOrder.filter(cat => cat in groupedSkills);
+
+const getCategoryName = (category: string) => {
+  return t.skillCategories[category as keyof typeof t.skillCategories] || category;
+};
+
+const formatYears = (years: number | null | undefined): string => {
+  if (years === null || years === undefined) return '';
+  if (years === 0) return '<1';
+  return `${years}+`;
+};
 ---
 
 <TerminalLayout
@@ -23,32 +36,29 @@ const groupedSkills = skillEntries.reduce((acc, entry) => {
 >
   <section class="skills-content">
     <div class="prompt">{t.pages.skills.prompt}</div>
-    <div class="skills-json">
-      <pre class="json-bracket">{'{'}</pre>
-      {Object.entries(groupedSkills).map(([category, items], index, arr) => (
-        <div class="skill-category">
-          <div class="category-name">  "{category.toLowerCase()}": [</div>
-          <div class="skills-list">
-            {items.map((skill) => (
-              <div class="skill-entry">
-                <span class="skill-prefix">    {'{'}</span>
-                <SkillBar name={skill.name} years={skill.years} />
-                <span class="skill-suffix">{'}'},</span>
-              </div>
+
+    <div class="skills-grid">
+      {sortedCategories.map((category) => (
+        <div class="skill-card">
+          <div class="card-header">
+            <span class="card-title">{getCategoryName(category)}</span>
+          </div>
+          <div class="card-content">
+            {groupedSkills[category].map((skill) => (
+              <SkillBar name={skill.name} years={formatYears(skill.years)} />
             ))}
           </div>
-          <div class="category-close">  ]{index < arr.length - 1 ? ',' : ''}</div>
         </div>
       ))}
-      <pre class="json-bracket">{'}'}</pre>
     </div>
+
     <div class="cursor">$ <span class="blink">_</span></div>
   </section>
 </TerminalLayout>
 
 <style>
   .skills-content {
-    max-width: 700px;
+    max-width: 900px;
   }
 
   .prompt {
@@ -56,47 +66,36 @@ const groupedSkills = skillEntries.reduce((acc, entry) => {
     margin-bottom: 1.5rem;
   }
 
-  .skills-json {
+  .skills-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .skill-card {
     background-color: var(--bg-secondary);
-    padding: 1.5rem;
     border-radius: 4px;
-    margin-bottom: 2rem;
+    padding: 1rem;
   }
 
-  .json-bracket {
-    color: var(--text-heading);
-    margin: 0;
-    background: none;
-    padding: 0;
+  .card-header {
+    margin-bottom: 0.75rem;
   }
 
-  .skill-category {
-    margin: 0.5rem 0;
-  }
-
-  .category-name {
+  .card-title {
     color: var(--accent-primary);
-  }
-
-  .category-close {
-    color: var(--text-primary);
-  }
-
-  .skill-entry {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0.25rem 0;
-  }
-
-  .skill-prefix,
-  .skill-suffix {
-    color: var(--text-muted);
+    font-weight: 500;
     font-size: 0.875rem;
+  }
+
+  .card-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .cursor {
     color: var(--text-primary);
+    margin-top: 2rem;
   }
 
   .blink {

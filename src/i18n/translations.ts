@@ -8,7 +8,7 @@ export const translations = {
     },
     meta: {
       title: 'Ken Fukuyama - Portfolio',
-      description: 'Software Engineer passionate about building scalable systems',
+      description: 'Web developer with 10+ years\' experience in enterprise applications',
     },
     pages: {
       about: {
@@ -36,6 +36,24 @@ export const translations = {
       readMore: 'Read more',
       returnHome: '$ cd ~  [← Return Home]',
     },
+    skillLevels: {
+      1: 'Beginner',
+      2: 'Basics',
+      3: 'Intermediate',
+      4: 'Advanced',
+    },
+    skillCategories: {
+      language: 'Language',
+      frontendFramework: 'Frontend Framework',
+      backendFramework: 'Backend Framework',
+      database: 'Database',
+      test: 'Test',
+      infrastructure: 'Infrastructure',
+      saas: 'SaaS',
+    },
+    skillLegend: {
+      title: 'Legend',
+    },
     error: {
       title: '404 - Page Not Found',
       message: 'Error: ENOENT: no such file or directory',
@@ -53,7 +71,7 @@ export const translations = {
     },
     meta: {
       title: '福山 健 - ポートフォリオ',
-      description: 'スケーラブルなシステム構築に情熱を持つソフトウェアエンジニア',
+      description: 'エンタープライズ向けWebアプリケーション開発10年以上の経験',
     },
     pages: {
       about: {
@@ -80,6 +98,24 @@ export const translations = {
       home: 'ホーム',
       readMore: '続きを読む',
       returnHome: '$ cd ~  [← ホームへ戻る]',
+    },
+    skillLevels: {
+      1: 'サポートできる',
+      2: '調べながら自走できる',
+      3: '自走できる',
+      4: '他者に教えることもできる',
+    },
+    skillCategories: {
+      language: '言語',
+      frontendFramework: 'フロントエンドフレームワーク',
+      backendFramework: 'バックエンドフレームワーク',
+      database: 'データベース',
+      test: 'テスト',
+      infrastructure: 'インフラ',
+      saas: 'SaaS',
+    },
+    skillLegend: {
+      title: '凡例',
     },
     error: {
       title: '404 - ページが見つかりません',
